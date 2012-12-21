@@ -41,3 +41,38 @@ PortCtrlDriver::PortCtrlDriver(port_ctrl_pin pin)
 PortCtrlDriver::~PortCtrlDriver(void)
 {
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This method clears the interrupt status for the pin managed by the class instance.
+ */
+void PortCtrlDriver::ClearIntStatus(void)
+{
+  /*
+   * Write to the interrupt status flag bit in the pin control register corresponding to the pin to clear the interrupt status.
+   */
+  portReg->PCR[(uint8)portPin] |= ((uint32)1 << PORT_PCR_ISF_SHIFT);
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This method configures the multiplexing mode for the pin managed by the class instance.
+ */
+void PortCtrlDriver::SetMuxMode(port_ctrl_pin_mux_mode mode)
+{
+  /*
+   * Set the mux control bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.
+   */
+  portReg->PCR[(uint8)portPin] &= ~(PORT_PCR_MUX_MASK);
+  portReg->PCR[(uint8)portPin] |= ((uint32)mode << PORT_PCR_MUX_SHIFT);
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This method configures the interrupt and DMA mode for the pin managed by the class instance.
+ */
+void PortCtrlDriver::SetIntDmaMode(port_ctrl_pin_int_dma_mode mode)
+{
+  /*
+   * Set the interrupt configuration bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.
+   */
+  portReg->PCR[(uint8)portPin] &= ~(PORT_PCR_IRQC_MASK);
+  portReg->PCR[(uint8)portPin] |= ((uint32)mode << PORT_PCR_IRQC_SHIFT);
+}

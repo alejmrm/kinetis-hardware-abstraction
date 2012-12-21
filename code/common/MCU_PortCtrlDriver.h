@@ -98,6 +98,33 @@ typedef enum  {
   PORT_CTRL_PIN_E24,    PORT_CTRL_PIN_E25, PORT_CTRL_PIN_E26, PORT_CTRL_PIN_E27,
   PORT_CTRL_PIN_E28,    PORT_CTRL_PIN_E29, PORT_CTRL_PIN_E30, PORT_CTRL_PIN_E31
 } port_ctrl_pin;
+/*
+ * This type defines the port control multiplexing modes for which the pins can be configured.
+ */
+typedef enum  {
+  PORT_CTRL_PIN_MUX_MODE_DISABLED_ANALOG = 0,
+  PORT_CTRL_PIN_MUX_MODE_ALT_1_GPIO      = 1,
+  PORT_CTRL_PIN_MUX_MODE_ALT_2           = 2,
+  PORT_CTRL_PIN_MUX_MODE_ALT_3           = 3,
+  PORT_CTRL_PIN_MUX_MODE_ALT_4           = 4,
+  PORT_CTRL_PIN_MUX_MODE_ALT_5           = 5,
+  PORT_CTRL_PIN_MUX_MODE_ALT_6           = 6,
+  PORT_CTRL_PIN_MUX_MODE_ALT_7           = 7
+} port_ctrl_pin_mux_mode;
+/*
+ * This type defines the port control interrupt and DMA modes for which the pins can be configured.
+ */
+typedef enum  {
+  PORT_CTRL_PIN_INT_DMA_MODE_DISABLED         = 0,
+  PORT_CTRL_PIN_INT_DMA_MODE_DMA_RISING_EDGE  = 1,
+  PORT_CTRL_PIN_INT_DMA_MODE_DMA_FALLING_EDGE = 2,
+  PORT_CTRL_PIN_INT_DMA_MODE_DMA_EITHER_EDGE  = 3,
+  PORT_CTRL_PIN_INT_DMA_MODE_INT_LVL_LO       = 8,
+  PORT_CTRL_PIN_INT_DMA_MODE_INT_RISING_EDGE  = 9,
+  PORT_CTRL_PIN_INT_DMA_MODE_INT_FALLING_EDGE = 10,
+  PORT_CTRL_PIN_INT_DMA_MODE_INT_EITHER_EDGE  = 11,
+  PORT_CTRL_PIN_INT_DMA_MODE_INT_LVL_HI       = 12
+} port_ctrl_pin_int_dma_mode;
 
 /*****************************************************************************************************************************************************
 *
@@ -118,6 +145,18 @@ class PortCtrlDriver : public MCUPeriphDriver
    */
   PortCtrlDriver(port_ctrl_pin pin);
   ~PortCtrlDriver(void);
+  /*
+   * This method clears the interrupt status for the pin managed by the class instance.
+   */
+  void ClearIntStatus(void);
+  /*
+   * This method configures the multiplexing mode for the pin managed by the class instance.
+   */
+  void SetMuxMode(port_ctrl_pin_mux_mode mode);
+  /*
+   * This method configures the interrupt and DMA mode for the pin managed by the class instance.
+   */
+  void SetIntDmaMode(port_ctrl_pin_int_dma_mode mode);
 
   /****************
    * Private Data
