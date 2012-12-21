@@ -1821,6 +1821,9 @@
     <group>
       <name>Common</name>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_IOPortDriver.h</name>
       </file>
       <file>
@@ -1838,6 +1841,9 @@
     <name>Source</name>
     <group>
       <name>Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.c</name>
+      </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_IOPortDriver.c</name>
       </file>

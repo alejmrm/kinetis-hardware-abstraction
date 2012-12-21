@@ -11,16 +11,6 @@
 
 /*****************************************************************************************************************************************************
 *
-*  Private Data
-*
-*****************************************************************************************************************************************************/
-/*
- * This static class data member is an array containing pointers to the MCU register structures for each of the I/O ports.
- */
-GPIO_MemMapPtr IOPortDriver::ioPortRegs[NUM_IO_PORTS] = {PTA_BASE_PTR, PTB_BASE_PTR, PTC_BASE_PTR, PTD_BASE_PTR, PTE_BASE_PTR};
-
-/*****************************************************************************************************************************************************
-*
 *  Public Methods
 *
 *****************************************************************************************************************************************************/
@@ -30,7 +20,6 @@ GPIO_MemMapPtr IOPortDriver::ioPortRegs[NUM_IO_PORTS] = {PTA_BASE_PTR, PTB_BASE_
 IOPortDriver::IOPortDriver(io_port port)
 {
   this->port = port;
-  reg = ioPortRegs[port];
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -38,48 +27,4 @@ IOPortDriver::IOPortDriver(io_port port)
  */
 IOPortDriver::~IOPortDriver(void)
 {
-}
-/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
-/*
- * This method sets the direction of the specified I/O pin.
- */
-void IOPortDriver::SetPinDir(io_pin pin, io_pin_dir dir)
-{
-  /*
-   * Clear or set the bit in the port data direction register corresponding to the specified pin, depending on the specified direction.
-   */
-  if (dir == IO_PIN_DIR_IN)
-    reg->PDDR &= ~((uint32)1 << pin);
-  else if (dir == IO_PIN_DIR_OUT)
-    reg->PDDR |= ((uint32)1 << pin);
-}
-/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
-/*
- * This method sets the specified I/O pin to the specified level.
- */
-void IOPortDriver::SetPinLvl(io_pin pin, io_pin_lvl lvl)
-{
-  /*
-   * Set the bit corresponding to the specified pin in either the port clear output register or the port set output register, depending on the
-   * specified level.
-   */
-  if (lvl == IO_PIN_LVL_LO)
-    reg->PCOR = ((uint32)1 << pin);
-  else if (lvl == IO_PIN_LVL_HI)
-    reg->PSOR = ((uint32)1 << pin);
-}
-/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
-/*
- * This method provides the level of the specified I/O pin.
- */
-io_pin_lvl IOPortDriver::GetPinLvl(io_pin pin)
-{
-  /*
-   * Check the value of the port data input register bit corresponding to the specified pin. If the bit value is zero, the pin level is low. If the
-   * bit value is one, the pin level is high.
-   */
-  if (reg->PDIR & ((uint32)1 << pin) == 0)
-    return IO_PIN_LVL_LO;
-  else
-    return IO_PIN_LVL_HI;
 }
