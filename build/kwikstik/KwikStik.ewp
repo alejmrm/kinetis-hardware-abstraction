@@ -1826,6 +1826,9 @@
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCUPeriphDriver.h</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCUTypes.h</name>
+      </file>
     </group>
     <group>
       <name>KwikStik</name>

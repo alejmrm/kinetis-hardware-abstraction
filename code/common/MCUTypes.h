@@ -1,23 +1,28 @@
 /*****************************************************************************************************************************************************
 *
-*  Main.c  -  Copyright 2012, stokeware
+*  MCUTypes.h  -  Copyright 2012, stokeware
 *
-*  This file contains the main function for the KwikStik test project.
+*  This file contains standard type definitions.
 *
 *****************************************************************************************************************************************************/
-#include <freescale/MK40X256VMD100.h>
-#include "MCUTypes.h"
+#ifndef MCU_TYPES_H
+#define MCU_TYPES_H
 
-#pragma section = ".intvec"
+#include <stdint.h>
 
 /*****************************************************************************************************************************************************
 *
-*  Public Functions
+*  Type Definitions
 *
 *****************************************************************************************************************************************************/
-int main(void)
-{
-  SCB_VTOR = (unsigned int)__segment_begin(".intvec");
+/*
+ * These types provide standard definitions for signed and unsigned integers.
+ */
+typedef int8_t   int8;
+typedef uint8_t  uint8;
+typedef int16_t  int16;
+typedef uint16_t uint16;
+typedef int32_t  int32;
+typedef uint32_t uint32;
 
-  return 0;
-}
+#endif
