@@ -8,6 +8,7 @@
 #ifndef MCU_IO_PORT_DRIVER_H
 #define MCU_IO_PORT_DRIVER_H
 
+#include <freescale/MK40X256VMD100.h>
 #include "MCUPeriphDriver.h"
 
 /*****************************************************************************************************************************************************
@@ -19,7 +20,8 @@
  * This type defines the superset of available I/O ports. In general, for a specific MCU, only some of the ports are available.
  */
 typedef enum  {
-  IO_PORT_A = 0, IO_PORT_B, IO_PORT_C, IO_PORT_D, IO_PORT_E
+  IO_PORT_A = 0, IO_PORT_B, IO_PORT_C, IO_PORT_D, IO_PORT_E,
+  NUM_IO_PORTS
 } io_port;
 /*
  * This type defines the superset of I/O pins that are available on I/O ports. In general, for a specific MCU and port, only some of the pins are
@@ -87,6 +89,14 @@ class MCUIOPortDriver : public MCUPeriphDriver
    * This data member is the I/O port managed by the class instance.
    */
   io_port port;
+  /*
+   *
+   */
+  static GPIO_MemMapPtr ioPortRegs[NUM_IO_PORTS];
+  /*
+   * This data member is a pointer to the I/O port register structure for the port managed by the class instance.
+   */
+  GPIO_MemMapPtr reg;
 };
 
 #endif

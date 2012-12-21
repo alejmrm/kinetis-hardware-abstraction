@@ -5,7 +5,18 @@
 *  This file contains the MCU I/O port driver class implementation.
 *
 *****************************************************************************************************************************************************/
+#include <freescale/MK40X256VMD100.h>
 #include "MCUIOPortDriver.h"
+
+/*****************************************************************************************************************************************************
+*
+*  Private Data
+*
+*****************************************************************************************************************************************************/
+/*
+ * This static class data member is an array containing pointers to the MCU register structures for each of the I/O ports.
+ */
+GPIO_MemMapPtr MCUIOPortDriver::ioPortRegs[NUM_IO_PORTS] = {PTA_BASE_PTR, PTB_BASE_PTR, PTC_BASE_PTR, PTD_BASE_PTR, PTE_BASE_PTR};
 
 /*****************************************************************************************************************************************************
 *
@@ -18,6 +29,7 @@
 MCUIOPortDriver::MCUIOPortDriver(io_port port)
 {
   this->port = port;
+  reg = ioPortRegs[port];
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
