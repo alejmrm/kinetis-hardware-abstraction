@@ -1,0 +1,144 @@
+/*****************************************************************************************************************************************************
+*
+*  MCU_PortCtrlDriver.h  -  Copyright 2012, stokeware
+*
+*  This file contains the MCU port control and interrupt driver class interface.
+*
+*****************************************************************************************************************************************************/
+#ifndef MCU_PORT_CTRL_DRIVER_H
+#define MCU_PORT_CTRL_DRIVER_H
+
+#include <freescale/MK40X256VMD100.h>
+#include "MCU_PeriphDriver.h"
+
+/*****************************************************************************************************************************************************
+*
+*  Type Definitions
+*
+*****************************************************************************************************************************************************/
+/*
+ * This type defines the superset of available ports. In general, for a specific MCU, only some of the ports are available.
+ */
+typedef enum  {
+  PORT_CTRL_A = 0, PORT_CTRL_B, PORT_CTRL_C, PORT_CTRL_D, PORT_CTRL_E,
+  NUM_PORT_CTRL_PORTS
+} port_ctrl_port;
+/*
+ * This type defines the superset of pins that are available on each port. In general, for a specific MCU and port, only some of the pins are
+ * available.
+ */
+typedef enum  {
+  PORT_CTRL_PORT_PIN_0 = 0, PORT_CTRL_PORT_PIN_1,  PORT_CTRL_PORT_PIN_2,  PORT_CTRL_PORT_PIN_3,
+  PORT_CTRL_PORT_PIN_4,     PORT_CTRL_PORT_PIN_5,  PORT_CTRL_PORT_PIN_6,  PORT_CTRL_PORT_PIN_7,
+  PORT_CTRL_PORT_PIN_8,     PORT_CTRL_PORT_PIN_9,  PORT_CTRL_PORT_PIN_10, PORT_CTRL_PORT_PIN_11,
+  PORT_CTRL_PORT_PIN_12,    PORT_CTRL_PORT_PIN_13, PORT_CTRL_PORT_PIN_14, PORT_CTRL_PORT_PIN_15,
+  PORT_CTRL_PORT_PIN_16,    PORT_CTRL_PORT_PIN_17, PORT_CTRL_PORT_PIN_18, PORT_CTRL_PORT_PIN_19,
+  PORT_CTRL_PORT_PIN_20,    PORT_CTRL_PORT_PIN_21, PORT_CTRL_PORT_PIN_22, PORT_CTRL_PORT_PIN_23,
+  PORT_CTRL_PORT_PIN_24,    PORT_CTRL_PORT_PIN_25, PORT_CTRL_PORT_PIN_26, PORT_CTRL_PORT_PIN_27,
+  PORT_CTRL_PORT_PIN_28,    PORT_CTRL_PORT_PIN_29, PORT_CTRL_PORT_PIN_30, PORT_CTRL_PORT_PIN_31,
+  NUM_PORT_CTRL_PORT_PINS
+} port_ctrl_port_pin;
+/*
+ * This type defines the superset of available port control pins. In general, for a specific MCU, only some of the pins are available.
+ */
+typedef enum  {
+  /*
+   * Port A.
+   */
+  PORT_CTRL_PIN_A0 = 0, PORT_CTRL_PIN_A1,  PORT_CTRL_PIN_A2,  PORT_CTRL_PIN_A3,
+  PORT_CTRL_PIN_A4,     PORT_CTRL_PIN_A5,  PORT_CTRL_PIN_A6,  PORT_CTRL_PIN_A7,
+  PORT_CTRL_PIN_A8,     PORT_CTRL_PIN_A9,  PORT_CTRL_PIN_A10, PORT_CTRL_PIN_A11,
+  PORT_CTRL_PIN_A12,    PORT_CTRL_PIN_A13, PORT_CTRL_PIN_A14, PORT_CTRL_PIN_A15,
+  PORT_CTRL_PIN_A16,    PORT_CTRL_PIN_A17, PORT_CTRL_PIN_A18, PORT_CTRL_PIN_A19,
+  PORT_CTRL_PIN_A20,    PORT_CTRL_PIN_A21, PORT_CTRL_PIN_A22, PORT_CTRL_PIN_A23,
+  PORT_CTRL_PIN_A24,    PORT_CTRL_PIN_A25, PORT_CTRL_PIN_A26, PORT_CTRL_PIN_A27,
+  PORT_CTRL_PIN_A28,    PORT_CTRL_PIN_A29, PORT_CTRL_PIN_A30, PORT_CTRL_PIN_A31,
+  /*
+   * Port B.
+   */
+  PORT_CTRL_PIN_B0,     PORT_CTRL_PIN_B1,  PORT_CTRL_PIN_B2,  PORT_CTRL_PIN_B3,
+  PORT_CTRL_PIN_B4,     PORT_CTRL_PIN_B5,  PORT_CTRL_PIN_B6,  PORT_CTRL_PIN_B7,
+  PORT_CTRL_PIN_B8,     PORT_CTRL_PIN_B9,  PORT_CTRL_PIN_B10, PORT_CTRL_PIN_B11,
+  PORT_CTRL_PIN_B12,    PORT_CTRL_PIN_B13, PORT_CTRL_PIN_B14, PORT_CTRL_PIN_B15,
+  PORT_CTRL_PIN_B16,    PORT_CTRL_PIN_B17, PORT_CTRL_PIN_B18, PORT_CTRL_PIN_B19,
+  PORT_CTRL_PIN_B20,    PORT_CTRL_PIN_B21, PORT_CTRL_PIN_B22, PORT_CTRL_PIN_B23,
+  PORT_CTRL_PIN_B24,    PORT_CTRL_PIN_B25, PORT_CTRL_PIN_B26, PORT_CTRL_PIN_B27,
+  PORT_CTRL_PIN_B28,    PORT_CTRL_PIN_B29, PORT_CTRL_PIN_B30, PORT_CTRL_PIN_B31,
+  /*
+   * Port C.
+   */
+  PORT_CTRL_PIN_C0,     PORT_CTRL_PIN_C1,  PORT_CTRL_PIN_C2,  PORT_CTRL_PIN_C3,
+  PORT_CTRL_PIN_C4,     PORT_CTRL_PIN_C5,  PORT_CTRL_PIN_C6,  PORT_CTRL_PIN_C7,
+  PORT_CTRL_PIN_C8,     PORT_CTRL_PIN_C9,  PORT_CTRL_PIN_C10, PORT_CTRL_PIN_C11,
+  PORT_CTRL_PIN_C12,    PORT_CTRL_PIN_C13, PORT_CTRL_PIN_C14, PORT_CTRL_PIN_C15,
+  PORT_CTRL_PIN_C16,    PORT_CTRL_PIN_C17, PORT_CTRL_PIN_C18, PORT_CTRL_PIN_C19,
+  PORT_CTRL_PIN_C20,    PORT_CTRL_PIN_C21, PORT_CTRL_PIN_C22, PORT_CTRL_PIN_C23,
+  PORT_CTRL_PIN_C24,    PORT_CTRL_PIN_C25, PORT_CTRL_PIN_C26, PORT_CTRL_PIN_C27,
+  PORT_CTRL_PIN_C28,    PORT_CTRL_PIN_C29, PORT_CTRL_PIN_C30, PORT_CTRL_PIN_C31,
+  /*
+   * Port D.
+   */
+  PORT_CTRL_PIN_D0,     PORT_CTRL_PIN_D1,  PORT_CTRL_PIN_D2,  PORT_CTRL_PIN_D3,
+  PORT_CTRL_PIN_D4,     PORT_CTRL_PIN_D5,  PORT_CTRL_PIN_D6,  PORT_CTRL_PIN_D7,
+  PORT_CTRL_PIN_D8,     PORT_CTRL_PIN_D9,  PORT_CTRL_PIN_D10, PORT_CTRL_PIN_D11,
+  PORT_CTRL_PIN_D12,    PORT_CTRL_PIN_D13, PORT_CTRL_PIN_D14, PORT_CTRL_PIN_D15,
+  PORT_CTRL_PIN_D16,    PORT_CTRL_PIN_D17, PORT_CTRL_PIN_D18, PORT_CTRL_PIN_D19,
+  PORT_CTRL_PIN_D20,    PORT_CTRL_PIN_D21, PORT_CTRL_PIN_D22, PORT_CTRL_PIN_D23,
+  PORT_CTRL_PIN_D24,    PORT_CTRL_PIN_D25, PORT_CTRL_PIN_D26, PORT_CTRL_PIN_D27,
+  PORT_CTRL_PIN_D28,    PORT_CTRL_PIN_D29, PORT_CTRL_PIN_D30, PORT_CTRL_PIN_D31,
+  /*
+   * Port E.
+   */
+  PORT_CTRL_PIN_E0,     PORT_CTRL_PIN_E1,  PORT_CTRL_PIN_E2,  PORT_CTRL_PIN_E3,
+  PORT_CTRL_PIN_E4,     PORT_CTRL_PIN_E5,  PORT_CTRL_PIN_E6,  PORT_CTRL_PIN_E7,
+  PORT_CTRL_PIN_E8,     PORT_CTRL_PIN_E9,  PORT_CTRL_PIN_E10, PORT_CTRL_PIN_E11,
+  PORT_CTRL_PIN_E12,    PORT_CTRL_PIN_E13, PORT_CTRL_PIN_E14, PORT_CTRL_PIN_E15,
+  PORT_CTRL_PIN_E16,    PORT_CTRL_PIN_E17, PORT_CTRL_PIN_E18, PORT_CTRL_PIN_E19,
+  PORT_CTRL_PIN_E20,    PORT_CTRL_PIN_E21, PORT_CTRL_PIN_E22, PORT_CTRL_PIN_E23,
+  PORT_CTRL_PIN_E24,    PORT_CTRL_PIN_E25, PORT_CTRL_PIN_E26, PORT_CTRL_PIN_E27,
+  PORT_CTRL_PIN_E28,    PORT_CTRL_PIN_E29, PORT_CTRL_PIN_E30, PORT_CTRL_PIN_E31
+} port_ctrl_pin;
+
+/*****************************************************************************************************************************************************
+*
+*  Class Definitions
+*
+*****************************************************************************************************************************************************/
+/*
+ * This class is the port control and interrupt peripheral driver class. It is derived from the peripheral driver abstract base class.
+ */
+class PortCtrlDriver : public MCUPeriphDriver
+{
+  /******************
+   * Public Methods
+   *****************/
+  public:
+  /*
+   * These methods are the constructor and destructor for the port control and interrupt peripheral driver class.
+   */
+  PortCtrlDriver(port_ctrl_pin pin);
+  ~PortCtrlDriver(void);
+
+  /****************
+   * Private Data
+   ***************/
+  private:
+  /*
+   * This data member is the port corresponding to the pin managed by the class instance.
+   */
+  port_ctrl_port port;
+  /*
+   * This data member is the port pin corresponding to the pin managed by the class instance.
+   */
+  port_ctrl_port_pin portPin;
+  /*
+   * This static data member is an array containing pointers to the MCU port control register structures for each of the ports.
+   */
+  static PORT_MemMapPtr portCtrlPortRegs[NUM_PORT_CTRL_PORTS];
+  /*
+   * This data member is a pointer to the port control register structure for the port managed by the class instance.
+   */
+  PORT_MemMapPtr portReg;
+};
+
+#endif
