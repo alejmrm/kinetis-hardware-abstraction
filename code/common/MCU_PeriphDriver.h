@@ -1,28 +1,29 @@
 /*****************************************************************************************************************************************************
 *
-*  MCUTypes.h  -  Copyright 2012, stokeware
+*  MCU_PeriphDriver.h  -  Copyright 2012, stokeware
 *
-*  This file contains standard type definitions.
+*  This file contains the MCU peripheral driver class interface.
 *
 *****************************************************************************************************************************************************/
-#ifndef MCU_TYPES_H
-#define MCU_TYPES_H
-
-#include <stdint.h>
+#ifndef MCU_PERIPH_DRIVER_H
+#define MCU_PERIPH_DRIVER_H
 
 /*****************************************************************************************************************************************************
 *
-*  Type Definitions
+*  Class Definitions
 *
 *****************************************************************************************************************************************************/
 /*
- * These types provide standard definitions for signed and unsigned integers.
+ * This class is the MCU peripheral driver abstract base class.
  */
-typedef int8_t   int8;
-typedef uint8_t  uint8;
-typedef int16_t  int16;
-typedef uint16_t uint16;
-typedef int32_t  int32;
-typedef uint32_t uint32;
+class MCUPeriphDriver
+{
+  /******************
+   * Public Methods
+   *****************/
+  public:
+  MCUPeriphDriver(void);
+  ~MCUPeriphDriver(void);
+};
 
 #endif

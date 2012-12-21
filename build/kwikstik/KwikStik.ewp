@@ -1821,7 +1821,16 @@
     <group>
       <name>Common</name>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCUTypes.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
     </group>
     <group>
@@ -1832,6 +1841,12 @@
     <name>Source</name>
     <group>
       <name>Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.c</name>
+      </file>
     </group>
     <group>
       <name>KwikStik</name>
