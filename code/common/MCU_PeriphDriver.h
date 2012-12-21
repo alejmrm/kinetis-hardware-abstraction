@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCUPeriphDriver.h  -  Copyright 2012, stokeware
+*  MCU_PeriphDriver.h  -  Copyright 2012, stokeware
 *
 *  This file contains the MCU peripheral driver class interface.
 *

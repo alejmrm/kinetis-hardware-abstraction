@@ -1821,13 +1821,13 @@
     <group>
       <name>Common</name>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCUIOPortDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_IOPortDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCUPeriphDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCUTypes.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
     </group>
     <group>
@@ -1839,10 +1839,7 @@
     <group>
       <name>Common</name>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCUIOPortDriver.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCUPeriphDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_IOPortDriver.c</name>
       </file>
     </group>
     <group>

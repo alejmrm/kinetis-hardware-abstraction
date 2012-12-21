@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCUTypes.h  -  Copyright 2012, stokeware
+*  MCU_Types.h  -  Copyright 2012, stokeware
 *
 *  This file contains standard type definitions.
 *

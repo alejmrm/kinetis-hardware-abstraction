@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCUIOPortDriver.h  -  Copyright 2012, stokeware
+*  MCU_IOPortDriver.h  -  Copyright 2012, stokeware
 *
 *  This file contains the MCU I/O port driver class interface.
 *
@@ -9,7 +9,7 @@
 #define MCU_IO_PORT_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
-#include "MCUPeriphDriver.h"
+#include "MCU_PeriphDriver.h"
 
 /*****************************************************************************************************************************************************
 *
