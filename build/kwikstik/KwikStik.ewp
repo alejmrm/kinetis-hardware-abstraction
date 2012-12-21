@@ -1814,7 +1814,25 @@
       <data/>
     </settings>
   </configuration>
-  <file>
-    <name>$PROJ_DIR$\..\..\code\kwikstik\Main.c</name>
-  </file>
+  <group>
+    <name>Header</name>
+    <group>
+      <name>Common</name>
+    </group>
+    <group>
+      <name>KwikStik</name>
+    </group>
+  </group>
+  <group>
+    <name>Source</name>
+    <group>
+      <name>Common</name>
+    </group>
+    <group>
+      <name>KwikStik</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\kwikstik\Main.c</name>
+      </file>
+    </group>
+  </group>
 </project>
