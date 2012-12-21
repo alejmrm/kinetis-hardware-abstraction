@@ -54,7 +54,7 @@ typedef enum  {
 /*
  * This class is the I/O port peripheral driver class. It is derived from the peripheral driver abstract base class.
  */
-class MCUIOPortDriver : public MCUPeriphDriver
+class IOPortDriver : public MCUPeriphDriver
 {
   /******************
    * Public Methods
@@ -63,11 +63,11 @@ class MCUIOPortDriver : public MCUPeriphDriver
   /*
    * This method is the constructor for the I/O port peripheral driver class.
    */
-  MCUIOPortDriver(io_port port);
+  IOPortDriver(io_port port);
   /*
    * This method is the destructor for the I/O port peripheral driver class.
    */
-  ~MCUIOPortDriver(void);
+  ~IOPortDriver(void);
   /*
    * This method sets the direction of the specified I/O pin.
    */
