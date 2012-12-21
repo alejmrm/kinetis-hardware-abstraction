@@ -22,6 +22,7 @@ int main(void)
 {
   SCB_VTOR = (unsigned int)__segment_begin(".intvec");
 
+  SIM_SCGC6 |= SIM_SCGC6_PIT_MASK;
   IntTmrDriver::EnableModule();
   ctrlIntTmrDriver.SetPeriod(10000);
   ctrlIntTmrDriver.EnableInt();
