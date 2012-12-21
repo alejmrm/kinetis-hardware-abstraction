@@ -1832,6 +1832,9 @@
     <name>Source</name>
     <group>
       <name>Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCUPeriphDriver.c</name>
+      </file>
     </group>
     <group>
       <name>KwikStik</name>
