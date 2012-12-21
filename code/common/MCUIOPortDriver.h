@@ -32,11 +32,17 @@ typedef enum  {
   IO_PIN_24,    IO_PIN_25, IO_PIN_26, IO_PIN_27, IO_PIN_28, IO_PIN_29, IO_PIN_30, IO_PIN_31
 } io_pin;
 /*
+ * This type defines the I/O pin directions.
+ */
+typedef enum  {
+  IO_PIN_DIR_IN = 0, IO_PIN_DIR_OUT
+} io_pin_dir;
+/*
  * This type defines the I/O pin input and output levels.
  */
 typedef enum  {
-  IO_LVL_LO = 0, IO_LVL_HI
-} io_lvl;
+  IO_PIN_LVL_LO = 0, IO_PIN_LVL_HI
+} io_pin_lvl;
 
 /*****************************************************************************************************************************************************
 *
@@ -61,13 +67,17 @@ class MCUIOPortDriver : public MCUPeriphDriver
    */
   ~MCUIOPortDriver(void);
   /*
+   * This method sets the direction of the specified I/O pin.
+   */
+  void SetPinDir(io_pin pin, io_pin_dir dir);
+  /*
    * This method sets the specified I/O pin to the specified level.
    */
-  void SetPinLvl(io_pin pin, io_lvl lvl);
+  void SetPinLvl(io_pin pin, io_pin_lvl lvl);
   /*
    * This method provides the level of the specified I/O pin.
    */
-  io_lvl GetPinLvl(io_pin pin);
+  io_pin_lvl GetPinLvl(io_pin pin);
 
   /****************
    * Private Data

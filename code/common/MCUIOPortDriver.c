@@ -30,14 +30,21 @@ MCUIOPortDriver::~MCUIOPortDriver(void)
 /*
  * ...
  */
-void MCUIOPortDriver::SetPinLvl(io_pin pin, io_lvl lvl)
+void MCUIOPortDriver::SetPinDir(io_pin pin, io_pin_dir dir)
 {
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
  * ...
  */
-io_lvl MCUIOPortDriver::GetPinLvl(io_pin pin)
+void MCUIOPortDriver::SetPinLvl(io_pin pin, io_pin_lvl lvl)
 {
-  return IO_LVL_LO;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * ...
+ */
+io_pin_lvl MCUIOPortDriver::GetPinLvl(io_pin pin)
+{
+  return IO_PIN_LVL_LO;
 }
