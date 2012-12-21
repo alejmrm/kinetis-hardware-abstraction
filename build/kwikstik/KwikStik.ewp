@@ -1821,6 +1821,9 @@
     <group>
       <name>Common</name>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCUIOPortDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCUPeriphDriver.h</name>
       </file>
     </group>
@@ -1832,6 +1835,9 @@
     <name>Source</name>
     <group>
       <name>Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCUIOPortDriver.c</name>
+      </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCUPeriphDriver.c</name>
       </file>
