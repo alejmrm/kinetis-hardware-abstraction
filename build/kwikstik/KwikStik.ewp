@@ -1845,6 +1845,9 @@
     <group>
       <name>Common</name>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\cstartup_M_K40.s</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.c</name>
       </file>
       <file>

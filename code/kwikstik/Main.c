@@ -23,12 +23,17 @@ int main(void)
   SCB_VTOR = (unsigned int)__segment_begin(".intvec");
 
   SIM_SCGC6 |= SIM_SCGC6_PIT_MASK;
+  NVIC_BASE_PTR->ISER[2] |= ((uint32)1 << 5);
   IntTmrDriver::EnableModule();
   ctrlIntTmrDriver.SetPeriod(10000);
   ctrlIntTmrDriver.EnableInt();
   ctrlIntTmrDriver.EnableTmr();
 
   while (true) { }
+}
+
+extern "C" {
+  void PIT1_IRQHandler(void);
 }
 
 void PIT1_IRQHandler(void)
