@@ -6,9 +6,12 @@
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
+#include "MCU_IntTmrDriver.h"
 #include "MCU_Types.h"
 
 #pragma section = ".intvec"
+
+IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
 
 /*****************************************************************************************************************************************************
 *
@@ -19,5 +22,15 @@ int main(void)
 {
   SCB_VTOR = (unsigned int)__segment_begin(".intvec");
 
-  return 0;
+  IntTmrDriver::EnableModule();
+  ctrlIntTmrDriver.SetPeriod(10000);
+  ctrlIntTmrDriver.EnableInt();
+  ctrlIntTmrDriver.EnableTmr();
+
+  while (true) { }
+}
+
+void PIT1_IRQHandler(void)
+{
+  ctrlIntTmrDriver.ClearInt();
 }
