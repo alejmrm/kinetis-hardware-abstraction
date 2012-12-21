@@ -1845,6 +1845,9 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.c</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.c</name>
       </file>
     </group>
