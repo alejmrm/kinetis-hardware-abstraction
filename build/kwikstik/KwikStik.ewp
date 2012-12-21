@@ -293,7 +293,8 @@
         </option>
         <option>
           <name>CCIncludePath2</name>
-          <state></state>
+          <state>$PROJ_DIR$\..\..\code\common</state>
+          <state>$PROJ_DIR$\..\..\code\kwikstik</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1199,7 +1200,8 @@
         </option>
         <option>
           <name>CCIncludePath2</name>
-          <state></state>
+          <state>$PROJ_DIR$\..\..\code\common</state>
+          <state>$PROJ_DIR$\..\..\code\kwikstik</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1818,6 +1820,9 @@
     <name>Header</name>
     <group>
       <name>Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCUTypes.h</name>
+      </file>
     </group>
     <group>
       <name>KwikStik</name>
