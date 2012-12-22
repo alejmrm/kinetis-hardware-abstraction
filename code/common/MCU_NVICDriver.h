@@ -29,6 +29,10 @@ class NVICDriver : public MCUPeriphDriver
    */
   NVICDriver(void);
   ~NVICDriver(void);
+  /*
+   * This static method initializes the NVIC module.
+   */
+  static void InitModule(void);
 };
 
 #endif

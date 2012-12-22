@@ -27,3 +27,13 @@ NVICDriver::NVICDriver(void)
 NVICDriver::~NVICDriver(void)
 {
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method initializes the NVIC module.
+ */
+#pragma section = ".intvec"
+
+void NVICDriver::InitModule(void)
+{
+  SCB_VTOR = (unsigned int)__segment_begin(".intvec");
+}
