@@ -1833,6 +1833,9 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_SysIntegDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
     </group>
@@ -1858,6 +1861,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_SysIntegDriver.c</name>
       </file>
     </group>
     <group>
