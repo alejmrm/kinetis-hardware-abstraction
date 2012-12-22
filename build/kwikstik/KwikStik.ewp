@@ -1827,6 +1827,9 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
       </file>
       <file>
@@ -1852,6 +1855,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.c</name>
