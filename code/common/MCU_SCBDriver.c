@@ -34,3 +34,11 @@ SCBDriver::~SCBDriver(void)
 void SCBDriver::InitModule(void)
 {
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This function sets the starting address of the vector table.
+ */
+void SCBDriver::SetVectorTableAddr(void* addr)
+{
+  SCB_VTOR = (uint32)addr;
+}
