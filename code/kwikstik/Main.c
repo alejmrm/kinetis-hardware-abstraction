@@ -8,6 +8,7 @@
 #include <freescale/MK40X256VMD100.h>
 #include "MCU_IntTmrDriver.h"
 #include "MCU_NVICDriver.h"
+#include "MCU_SCBDriver.h"
 #include "MCU_Types.h"
 
 IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
@@ -19,10 +20,13 @@ IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
 *****************************************************************************************************************************************************/
 int main(void)
 {
+  SCBDriver::InitModule();
+  SCBDriver::SetVectorTableAddr((void*)__segment_begin(".intvec"));
   NVICDriver::InitModule();
 
   SIM_SCGC6 |= SIM_SCGC6_PIT_MASK;
   NVIC_BASE_PTR->ISER[2] |= ((uint32)1 << 5);
+
   IntTmrDriver::EnableModule();
   ctrlIntTmrDriver.SetPeriod(10000);
   ctrlIntTmrDriver.EnableInt();
