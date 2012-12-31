@@ -1,12 +1,12 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_SysIntegDriver.c  -  Copyright 2012, stokeware
+*  MCU_SIMDriver.c  -  Copyright 2012, stokeware
 *
 *  This file contains the MCU system integration module driver class implementation.
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
-#include "MCU_SysIntegDriver.h"
+#include "MCU_SIMDriver.h"
 #include "MCU_Types.h"
 
 /*****************************************************************************************************************************************************
@@ -17,7 +17,7 @@
 /*
  * This static data member is a pointer to the MCU system integration module register structure.
  */
-SIM_MemMapPtr sysIntegModuleReg = SIM_BASE_PTR;
+SIM_MemMapPtr simReg = SIM_BASE_PTR;
 
 /*****************************************************************************************************************************************************
 *
@@ -27,13 +27,13 @@ SIM_MemMapPtr sysIntegModuleReg = SIM_BASE_PTR;
 /*
  * This method is the constructor for the system integration module peripheral driver class.
  */
-SysIntegDriver::SysIntegDriver(void)
+SIMDriver::SIMDriver(void)
 {
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
  * This method is the destructor for the system integration module peripheral driver class.
  */
-SysIntegDriver::~SysIntegDriver(void)
+SIMDriver::~SIMDriver(void)
 {
 }
