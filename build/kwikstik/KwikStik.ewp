@@ -1833,6 +1833,9 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.h</name>
       </file>
       <file>
@@ -1861,6 +1864,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.c</name>
