@@ -67,7 +67,7 @@ extern "C"  {
 
 #pragma location = ".intvec"
 
-static const vector_table vectorTable = {
+vector_table vectorTable = {
   __sfe("CSTACK"),
   {
     __iar_program_start,
@@ -207,5 +207,4 @@ NVICDriver::~NVICDriver(void)
  */
 void NVICDriver::InitModule(void)
 {
-  SCB_VTOR = (uint32)&vectorTable;
 }
