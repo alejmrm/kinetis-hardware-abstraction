@@ -53,6 +53,11 @@ class SIMDriver : public MCUPeriphDriver
    */
   SIMDriver(void);
   ~SIMDriver(void);
+  /*
+   * These static methods enable and disable gating to the specified system clock.
+   */
+  static void EnableSysClkGating(sim_sys_clk clk);
+  static void DisableSysClkGating(sim_sys_clk clk);
 
   /****************
    * Private Data

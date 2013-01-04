@@ -41,3 +41,25 @@ SIMDriver::SIMDriver(void)
 SIMDriver::~SIMDriver(void)
 {
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method enables gating to the specified system clock.
+ */
+void SIMDriver::EnableSysClkGating(sim_sys_clk clk)
+{
+  /*
+   * Set the bit in the system clock gating control register corresponding to the specified system clock.
+   */
+  sysClkGateCtrlRegs[(uint8)clk >> 5] |= ((uint32)1 << ((uint8)clk & 0x1F));
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method disables gating to the specified system clock.
+ */
+void SIMDriver::DisableSysClkGating(sim_sys_clk clk)
+{
+  /*
+   * Clear the bit in the system clock gating control register corresponding to the specified system clock.
+   */
+  sysClkGateCtrlRegs[(uint8)clk >> 5] &= ~((uint32)1 << ((uint8)clk & 0x1F));
+}
