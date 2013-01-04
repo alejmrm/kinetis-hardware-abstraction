@@ -36,7 +36,7 @@ void SCBDriver::InitModule(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This function sets the starting address of the vector table.
+ * This static method sets the starting address of the vector table.
  */
 void SCBDriver::SetVectorTableAddr(void* addr)
 {

@@ -1839,6 +1839,9 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
     </group>
@@ -1867,6 +1870,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.c</name>
       </file>
     </group>
     <group>

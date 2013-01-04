@@ -34,7 +34,7 @@ class SCBDriver : public MCUPeriphDriver
    */
   static void InitModule(void);
   /*
-   * This function sets the starting address of the vector table.
+   * This static method sets the starting address of the vector table.
    */
   static void SetVectorTableAddr(void* addr);
 };

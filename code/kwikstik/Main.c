@@ -9,6 +9,7 @@
 #include "MCU_IntTmrDriver.h"
 #include "MCU_NVICDriver.h"
 #include "MCU_SCBDriver.h"
+#include "MCU_SIMDriver.h"
 #include "MCU_Types.h"
 
 #pragma section = ".intvec"
@@ -25,7 +26,8 @@ int main(void)
   SCBDriver::InitModule();
   SCBDriver::SetVectorTableAddr((void*)__segment_begin(".intvec"));
 
-  SIM_SCGC6 |= SIM_SCGC6_PIT_MASK;
+  SIMDriver::EnableSysClkGating(SIM_SYS_CLK_PIT);
+
   NVIC_BASE_PTR->ISER[2] |= ((uint32)1 << 5);
 
   IntTmrDriver::EnableModule();
