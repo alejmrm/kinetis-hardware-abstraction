@@ -68,9 +68,9 @@ class SIMDriver : public MCUPeriphDriver
    */
   static SIM_MemMapPtr simRegs;
   /*
-   * This static data member is an array of the system clock gating control registers.
+   * This static data member is an array of pointers to the system clock gating control registers.
    */
-  static uint32 sysClkGateCtrlRegs[NUM_SYS_CLK_GATING_CTRL_REGS];
+  static volatile uint32* sysClkGateCtrlRegs[NUM_SYS_CLK_GATING_CTRL_REGS];
 };
 
 #endif

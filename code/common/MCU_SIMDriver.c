@@ -19,9 +19,10 @@
  */
 SIM_MemMapPtr SIMDriver::simRegs = SIM_BASE_PTR;
 /*
- * This static data member is an array of the system clock gating control registers.
+ * This static data member is an array of pointers to the system clock gating control registers.
  */
-uint32 SIMDriver::sysClkGateCtrlRegs[NUM_SYS_CLK_GATING_CTRL_REGS] = {SIM_SCGC1, SIM_SCGC2, SIM_SCGC3, SIM_SCGC4, SIM_SCGC5, SIM_SCGC6, SIM_SCGC7};
+volatile uint32* SIMDriver::sysClkGateCtrlRegs[NUM_SYS_CLK_GATING_CTRL_REGS] = {&SIM_SCGC1, &SIM_SCGC2, &SIM_SCGC3, &SIM_SCGC4,
+                                                                                &SIM_SCGC5, &SIM_SCGC6, &SIM_SCGC7};
 
 /*****************************************************************************************************************************************************
 *
@@ -50,7 +51,7 @@ void SIMDriver::EnableSysClkGating(sim_sys_clk clk)
   /*
    * Set the bit in the system clock gating control register corresponding to the specified system clock.
    */
-  sysClkGateCtrlRegs[(uint8)clk >> 5] |= ((uint32)1 << ((uint8)clk & 0x1F));
+  *sysClkGateCtrlRegs[(uint8)clk >> 5] |= ((uint32)1 << ((uint8)clk & 0x1F));
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -61,5 +62,5 @@ void SIMDriver::DisableSysClkGating(sim_sys_clk clk)
   /*
    * Clear the bit in the system clock gating control register corresponding to the specified system clock.
    */
-  sysClkGateCtrlRegs[(uint8)clk >> 5] &= ~((uint32)1 << ((uint8)clk & 0x1F));
+  *sysClkGateCtrlRegs[(uint8)clk >> 5] &= ~((uint32)1 << ((uint8)clk & 0x1F));
 }
