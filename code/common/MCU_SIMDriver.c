@@ -2,7 +2,7 @@
 *
 *  MCU_SIMDriver.c  -  Copyright 2012, stokeware
 *
-*  This file contains the MCU system integration module driver class implementation.
+*  This file contains the system integration module driver class implementation.
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
@@ -15,9 +15,13 @@
 *
 *****************************************************************************************************************************************************/
 /*
- * This static data member is a pointer to the MCU system integration module register structure.
+ * This static data member is a pointer to the SIM register structure.
  */
-SIM_MemMapPtr simReg = SIM_BASE_PTR;
+SIM_MemMapPtr SIMDriver::simRegs = SIM_BASE_PTR;
+/*
+ * This static data member is an array of the system clock gating control registers.
+ */
+uint32 SIMDriver::sysClkGateCtrlRegs[NUM_SYS_CLK_GATING_CTRL_REGS] = {SIM_SCGC1, SIM_SCGC2, SIM_SCGC3, SIM_SCGC4, SIM_SCGC5, SIM_SCGC6, SIM_SCGC7};
 
 /*****************************************************************************************************************************************************
 *
@@ -25,14 +29,14 @@ SIM_MemMapPtr simReg = SIM_BASE_PTR;
 *
 *****************************************************************************************************************************************************/
 /*
- * This method is the constructor for the system integration module peripheral driver class.
+ * This method is the constructor for the SIM driver class.
  */
 SIMDriver::SIMDriver(void)
 {
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method is the destructor for the system integration module peripheral driver class.
+ * This method is the destructor for the SIM driver class.
  */
 SIMDriver::~SIMDriver(void)
 {
