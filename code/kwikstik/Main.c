@@ -5,13 +5,12 @@
 *  This file contains the main function for the KwikStik test project.
 *
 *****************************************************************************************************************************************************/
-#include <freescale/MK40X256VMD100.h>
 #include "MCU_IntTmrDriver.h"
+#include "MCU_NVICDriver.h"
 #include "MCU_SCBDriver.h"
 #include "MCU_SIMDriver.h"
 #include "MCU_Types.h"
-
-#pragma section = ".intvec"
+#include "VectorTable.h"
 
 IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
 
@@ -23,11 +22,11 @@ IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
 int main(void)
 {
   SCBDriver::InitModule();
-  SCBDriver::SetVectorTableAddr((void*)__segment_begin(".intvec"));
+  SCBDriver::SetVectorTableAddr(VectorTable::GetAddr());
 
   SIMDriver::EnableSysClkGating(SIM_SYS_CLK_PIT);
 
-  NVIC_BASE_PTR->ISER[2] |= ((uint32)1 << 5);
+  NVICDriver::EnableIntrpt(NVIC_INTRPT_PIT_1);
 
   IntTmrDriver::EnableModule();
   ctrlIntTmrDriver.SetPeriod(10000);
@@ -37,11 +36,7 @@ int main(void)
   while (true) { }
 }
 
-extern "C" {
-  void PIT1_IRQHandler(void);
-}
-
-void PIT1_IRQHandler(void)
+void HandlePITInt(void)
 {
   ctrlIntTmrDriver.ClearInt();
 }

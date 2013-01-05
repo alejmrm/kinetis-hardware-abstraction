@@ -1827,6 +1827,9 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
       </file>
       <file>
@@ -1841,6 +1844,9 @@
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\VectorTable.h</name>
+      </file>
     </group>
     <group>
       <name>KwikStik</name>
@@ -1851,13 +1857,13 @@
     <group>
       <name>Common</name>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\cstartup_M_K40.s</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.c</name>
@@ -1870,6 +1876,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\VectorTable.c</name>
       </file>
     </group>
     <group>
