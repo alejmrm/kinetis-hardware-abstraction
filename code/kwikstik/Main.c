@@ -37,11 +37,7 @@ int main(void)
   while (true) { }
 }
 
-extern "C" {
-  void PIT1_IRQHandler(void);
-}
-
-void PIT1_IRQHandler(void)
+void HandlePITInt(void)
 {
   ctrlIntTmrDriver.ClearInt();
 }
