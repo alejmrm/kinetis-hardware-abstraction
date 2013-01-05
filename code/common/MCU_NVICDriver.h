@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_NVICDriver.h  -  Copyright 2012, stokeware
+*  MCU_NVICDriver.h  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the MCU nested vectored interrupt controller driver class interface.
 *
