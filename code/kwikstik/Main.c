@@ -5,7 +5,6 @@
 *  This file contains the main function for the KwikStik test project.
 *
 *****************************************************************************************************************************************************/
-#include <freescale/MK40X256VMD100.h>
 #include "MCU_IntTmrDriver.h"
 #include "MCU_NVICDriver.h"
 #include "MCU_SCBDriver.h"
@@ -27,7 +26,7 @@ int main(void)
 
   SIMDriver::EnableSysClkGating(SIM_SYS_CLK_PIT);
 
-  NVIC_BASE_PTR->ISER[2] |= ((uint32)1 << 5);
+  NVICDriver::EnableIntrpt(NVIC_INTRPT_PIT_1);
 
   IntTmrDriver::EnableModule();
   ctrlIntTmrDriver.SetPeriod(10000);

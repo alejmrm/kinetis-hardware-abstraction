@@ -12,6 +12,21 @@
 
 /*****************************************************************************************************************************************************
 *
+*  Type Definitions
+*
+*****************************************************************************************************************************************************/
+/*
+ * This type defines the interrupts managed by the NVIC.
+ */
+typedef enum  {
+  NVIC_INTRPT_PIT_0 = 68,
+  NVIC_INTRPT_PIT_1 = 69,
+  NVIC_INTRPT_PIT_2 = 70,
+  NVIC_INTRPT_PIT_3 = 71
+} nvic_intrpt;
+
+/*****************************************************************************************************************************************************
+*
 *  Class Definitions
 *
 *****************************************************************************************************************************************************/
@@ -30,9 +45,18 @@ class NVICDriver : public MCUPeriphDriver
   NVICDriver(void);
   ~NVICDriver(void);
   /*
-   * This static method initializes the NVIC module.
+   * This static method enables the specified interrupt.
    */
-  static void InitModule(void);
+  static void EnableIntrpt(nvic_intrpt intrpt);
+
+  /****************
+   * Private Data
+   ***************/
+  private:
+  /*
+   * This static data member is a pointer to the NVIC register structure.
+   */
+  static NVIC_MemMapPtr nvicReg;
 };
 
 #endif

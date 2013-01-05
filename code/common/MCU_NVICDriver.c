@@ -11,6 +11,16 @@
 
 /*****************************************************************************************************************************************************
 *
+*  Private Data
+*
+*****************************************************************************************************************************************************/
+/*
+ * This static data member is a pointer to the NVIC register structure.
+ */
+NVIC_MemMapPtr NVICDriver::nvicReg = NVIC_BASE_PTR;
+
+/*****************************************************************************************************************************************************
+*
 *  Public Methods
 *
 *****************************************************************************************************************************************************/
@@ -29,8 +39,12 @@ NVICDriver::~NVICDriver(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This static method initializes the NVIC module.
+ * This static method enables the specified interrupt.
  */
-void NVICDriver::InitModule(void)
+void NVICDriver::EnableIntrpt(nvic_intrpt intrpt)
 {
+  /*
+   * Set the bit in the interrupt set-enable register corresponding to the specified interrupt.
+   */
+  nvicReg->ISER[(uint8)intrpt >> 5] |= ((uint32)1 << ((uint8)intrpt & 0x1F));
 }
