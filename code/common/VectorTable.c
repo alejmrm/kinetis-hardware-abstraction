@@ -11,13 +11,25 @@
 
 /*****************************************************************************************************************************************************
 *
-*  Private Functions
+*  External Functions
 *
 *****************************************************************************************************************************************************/
 /*
- * This function is the default interrupt service routine for interrupts that have not been assigned a specific handler function.
+ * This function is the entry point for program execution defined in the IAR startup code.
  */
-static void DefaultIsr(void)
+extern "C"  {
+  void __iar_program_start(void);
+}
+
+/*****************************************************************************************************************************************************
+*
+*  Private Methods
+*
+*****************************************************************************************************************************************************/
+/*
+ * This static method is the default interrupt service routine for interrupts that have not been assigned a specific handler function.
+ */
+void VectorTable::DefaultIsr(void)
 {
   while (true)  { }
 }
@@ -28,131 +40,124 @@ static void DefaultIsr(void)
 *
 *****************************************************************************************************************************************************/
 /*
- * This static constant variable ...
+ * This static constant data member is the interrupt vector table.
  */
-#define vectorTable __vector_table
-#pragma language=extended
-#pragma segment="CSTACK"
-
-extern "C"  {
-  void __iar_program_start(void);
-}
-
+#pragma segment = "CSTACK"
 #pragma location = ".intvec"
 
-vector_table vectorTable = {
+const vector_table VectorTable::vectorTable = {
   __sfe("CSTACK"),
   {
     __iar_program_start,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr,
-    DefaultIsr
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr,
+    VectorTable::DefaultIsr
   }
 };
 

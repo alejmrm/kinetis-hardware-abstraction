@@ -30,7 +30,7 @@
  */
 typedef void vector_table_isr(void);
 /*
- * This type defines the vector table structure.
+ * This type defines the interrupt vector table structure.
  */
 typedef struct {
   void*             stackPtr;                     // Initial stack pointer
@@ -56,6 +56,23 @@ class VectorTable
    */
   VectorTable(void);
   ~VectorTable(void);
+
+  /*******************
+   * Private Methods
+   ******************/
+  private:
+  /*
+   * This static method is the default interrupt service routine for interrupts that have not been assigned a specific handler function.
+   */
+  static void DefaultIsr(void);
+
+  /****************
+   * Private Data
+   ***************/
+  /*
+   * This static constant data member is the interrupt vector table.
+   */
+  static const vector_table vectorTable;
 };
 
 #endif
