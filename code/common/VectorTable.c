@@ -179,3 +179,11 @@ VectorTable::VectorTable(void)
 VectorTable::~VectorTable(void)
 {
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method provides the starting vector table address.
+ */
+void* VectorTable::GetAddr(void)
+{
+  return (void*)&VectorTable::vectorTable;
+}

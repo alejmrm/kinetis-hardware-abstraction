@@ -56,6 +56,10 @@ class VectorTable
    */
   VectorTable(void);
   ~VectorTable(void);
+  /*
+   * This static method provides the starting vector table address.
+   */
+  static void* GetAddr(void);
 
   /*******************
    * Private Methods

@@ -11,8 +11,7 @@
 #include "MCU_SCBDriver.h"
 #include "MCU_SIMDriver.h"
 #include "MCU_Types.h"
-
-#pragma section = ".intvec"
+#include "VectorTable.h"
 
 IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
 
@@ -24,7 +23,7 @@ IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
 int main(void)
 {
   SCBDriver::InitModule();
-  SCBDriver::SetVectorTableAddr((void*)__segment_begin(".intvec"));
+  SCBDriver::SetVectorTableAddr(VectorTable::GetAddr());
 
   SIMDriver::EnableSysClkGating(SIM_SYS_CLK_PIT);
 
