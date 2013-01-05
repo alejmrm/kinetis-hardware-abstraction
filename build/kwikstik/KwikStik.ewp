@@ -1844,6 +1844,9 @@
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\VectorTable.h</name>
+      </file>
     </group>
     <group>
       <name>KwikStik</name>
@@ -1873,6 +1876,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\VectorTable.c</name>
       </file>
     </group>
     <group>
