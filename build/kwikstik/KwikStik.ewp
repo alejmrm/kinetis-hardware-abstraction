@@ -683,11 +683,11 @@
         </option>
         <option>
           <name>IlinkIcfOverride</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkIcfFile</name>
-          <state>$TOOLKIT_DIR$\config\linker\Freescale\MK40xX256_10.icf</state>
+          <state>$PROJ_DIR$\KwikStik.icf</state>
         </option>
         <option>
           <name>IlinkIcfFileSlave</name>
