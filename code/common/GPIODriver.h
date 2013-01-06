@@ -1,12 +1,12 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_GPIODriver.h  -  Copyright 2012, stokeware
+*  GPIODriver.h  -  Copyright 2012, stokeware
 *
-*  This file contains the MCU general purpose I/O driver class interface.
+*  This file contains the general purpose I/O driver class interface.
 *
 *****************************************************************************************************************************************************/
-#ifndef MCU_GPIO_DRIVER_H
-#define MCU_GPIO_DRIVER_H
+#ifndef GPIO_DRIVER_H
+#define GPIO_DRIVER_H
 
 #include "MCU_PeriphDriver.h"
 
@@ -92,7 +92,7 @@ typedef enum  {
 *
 *****************************************************************************************************************************************************/
 /*
- * This class is the GPIO peripheral driver class. It is derived from the peripheral driver abstract base class.
+ * This class is the GPIO driver class. It is derived from the MCU peripheral driver abstract base class.
  */
 class GPIODriver : public MCUPeriphDriver
 {
@@ -101,7 +101,7 @@ class GPIODriver : public MCUPeriphDriver
    *****************/
   public:
   /*
-   * These methods are the constructor and destructor for the GPIO peripheral driver class.
+   * These methods are the constructor and destructor for the GPIO driver class.
    */
   GPIODriver(gpio_pin pin);
   ~GPIODriver(void);

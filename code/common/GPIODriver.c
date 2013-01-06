@@ -1,12 +1,12 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_GPIODriver.c  -  Copyright 2012, stokeware
+*  GPIODriver.c  -  Copyright 2012, stokeware
 *
-*  This file contains the MCU general purpose I/O driver class implementation.
+*  This file contains the general purpose I/O driver class implementation.
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
-#include "MCU_GPIODriver.h"
+#include "GPIODriver.h"
 #include "MCU_Types.h"
 
 /*****************************************************************************************************************************************************
@@ -25,7 +25,7 @@ GPIO_MemMapPtr GPIODriver::gpioPortRegs[NUM_GPIO_PORTS] = {PTA_BASE_PTR, PTB_BAS
 *
 *****************************************************************************************************************************************************/
 /*
- * This method is the constructor for the GPIO peripheral driver class.
+ * This method is the constructor for the GPIO driver class.
  */
 GPIODriver::GPIODriver(gpio_pin pin)
 {
@@ -35,7 +35,7 @@ GPIODriver::GPIODriver(gpio_pin pin)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method is the destructor for the GPIO peripheral driver class.
+ * This method is the destructor for the GPIO driver class.
  */
 GPIODriver::~GPIODriver(void)
 {
