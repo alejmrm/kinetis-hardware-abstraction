@@ -47,7 +47,7 @@ void VectorTable::DefaultIsr(void)
  * This static constant data member is the interrupt vector table.
  */
 #pragma segment = "CSTACK"
-#pragma location = ".intvec"
+#pragma location = ".vectortable"
 
 const vector_table VectorTable::vectorTable = {
   __sfe("CSTACK"),              // 0x0000 - ARM core: Initial stack pointer
