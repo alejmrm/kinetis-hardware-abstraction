@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_SCBDriver.h  -  Copyright 2012, stokeware
+*  MCU_SCBDriver.h  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the MCU system control block driver class interface.
 *
@@ -8,6 +8,7 @@
 #ifndef MCU_SCB_DRIVER_H
 #define MCU_SCB_DRIVER_H
 
+#include <freescale/MK40X256VMD100.h>
 #include "MCU_PeriphDriver.h"
 
 /*****************************************************************************************************************************************************

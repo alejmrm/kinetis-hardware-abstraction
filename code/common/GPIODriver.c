@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  GPIODriver.c  -  Copyright 2012, stokeware
+*  GPIODriver.c  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the general purpose I/O driver class implementation.
 *

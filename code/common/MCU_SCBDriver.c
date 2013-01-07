@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_SCBDriver.c  -  Copyright 2012, stokeware
+*  MCU_SCBDriver.c  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the MCU system control block driver class implementation.
 *

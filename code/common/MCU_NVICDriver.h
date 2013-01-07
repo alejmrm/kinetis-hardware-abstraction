@@ -8,6 +8,7 @@
 #ifndef MCU_NVIC_DRIVER_H
 #define MCU_NVIC_DRIVER_H
 
+#include <freescale/MK40X256VMD100.h>
 #include "MCU_PeriphDriver.h"
 
 /*****************************************************************************************************************************************************

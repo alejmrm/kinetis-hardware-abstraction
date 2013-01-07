@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_PortCtrlDriver.c  -  Copyright 2012, stokeware
+*  MCU_PortCtrlDriver.c  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the MCU port control and interrupt driver class implementation.
 *

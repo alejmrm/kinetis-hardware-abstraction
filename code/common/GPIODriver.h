@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  GPIODriver.h  -  Copyright 2012, stokeware
+*  GPIODriver.h  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the general purpose I/O driver class interface.
 *
@@ -8,6 +8,7 @@
 #ifndef GPIO_DRIVER_H
 #define GPIO_DRIVER_H
 
+#include <freescale/MK40X256VMD100.h>
 #include "MCU_PeriphDriver.h"
 
 /*****************************************************************************************************************************************************

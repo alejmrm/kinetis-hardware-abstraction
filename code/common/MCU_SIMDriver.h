@@ -1,6 +1,6 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_SIMDriver.h  -  Copyright 2012, stokeware
+*  MCU_SIMDriver.h  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the system integration module driver class interface.
 *
