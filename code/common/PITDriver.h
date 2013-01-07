@@ -1,12 +1,12 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_IntTmrDriver.h  -  Copyright 2012, stokeware
+*  PITDriver.h  -  Copyright 2012-2013, stokeware
 *
-*  This file contains the MCU periodic interrupt timer driver class interface.
+*  This file contains the periodic interrupt timer driver class interface.
 *
 *****************************************************************************************************************************************************/
-#ifndef MCU_INT_TMR_DRIVER_H
-#define MCU_INT_TMR_DRIVER_H
+#ifndef PIT_DRIVER_H
+#define PIT_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
 #include "MCU_PeriphDriver.h"
@@ -18,12 +18,12 @@
 *
 *****************************************************************************************************************************************************/
 /*
- * This type defines the superset of available periodic interrupt timers. In general, for a specific MCU, only some of the timers are available.
+ * This type defines the superset of available PIT timers. In general, for a specific MCU, only some of the timers are available.
  */
 typedef enum  {
-  INT_TMR_0 = 0, INT_TMR_1, INT_TMR_2, INT_TMR_3,
-  NUM_INT_TMRS
-} int_tmr;
+  PIT_TMR_0 = 0, PIT_TMR_1, PIT_TMR_2, PIT_TMR_3,
+  NUM_PIT_TMRS
+} pit_tmr;
 
 /*****************************************************************************************************************************************************
 *
@@ -31,21 +31,21 @@ typedef enum  {
 *
 *****************************************************************************************************************************************************/
 /*
- * This class is the periodic interrupt timer peripheral driver class. It is derived from the peripheral driver abstract base class.
+ * This class is the PIT driver class. It is derived from the peripheral driver abstract base class.
  */
-class IntTmrDriver : public MCUPeriphDriver
+class PITDriver : public MCUPeriphDriver
 {
   /******************
    * Public Methods
    *****************/
   public:
   /*
-   * These methods are the constructor and destructor for the periodic interrupt timer peripheral driver class.
+   * These methods are the constructor and destructor for the PIT driver class.
    */
-  IntTmrDriver(int_tmr tmr);
-  ~IntTmrDriver(void);
+  PITDriver(pit_tmr tmr);
+  ~PITDriver(void);
   /*
-   * This static method enables the periodic interrupt timer module.
+   * This static method enables the PIT module.
    */
   static void EnableModule(void);
   /*
@@ -64,29 +64,29 @@ class IntTmrDriver : public MCUPeriphDriver
   /*
    * These methods enable and disable the interrupt corresponding to the timer managed by the class instance.
    */
-  void EnableInt(void);
-  void DisableInt(void);
+  void EnableIntrpt(void);
+  void DisableIntrpt(void);
   /*
    * This method indicates whether the interrupt corresponding to the timer managed by the class instance is pending.
    */
-  bool IntIsPending(void);
+  bool IntrptIsPending(void);
   /*
    * This method clears the interrupt corresponding to the timer managed by the class instance.
    */
-  void ClearInt(void);
+  void ClearIntrpt(void);
 
   /****************
    * Private Data
    ***************/
   private:
   /*
-   * This static data member is a pointer to the MCU periodic interrupt timer register structure, which encompasses all of the individual timers.
+   * This static data member is a pointer to the PIT register structure, which encompasses all of the individual timers.
    */
-  static PIT_MemMapPtr tmrModuleReg;
+  static PIT_MemMapPtr pitReg;
   /*
    * This data member is the timer managed by this class instance.
    */
-  int_tmr tmr;
+  pit_tmr tmr;
 };
 
 #endif

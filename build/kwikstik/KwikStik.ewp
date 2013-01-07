@@ -1824,9 +1824,6 @@
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.h</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.h</name>
       </file>
       <file>
@@ -1845,6 +1842,9 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\PITDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\VectorTable.h</name>
       </file>
     </group>
@@ -1860,9 +1860,6 @@
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.c</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.c</name>
       </file>
       <file>
@@ -1876,6 +1873,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\PITDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\VectorTable.c</name>
