@@ -1824,9 +1824,6 @@
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.h</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
       </file>
       <file>
@@ -1840,6 +1837,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\PITDriver.h</name>
@@ -1860,9 +1860,6 @@
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.c</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.c</name>
       </file>
       <file>
@@ -1873,6 +1870,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\PITDriver.c</name>

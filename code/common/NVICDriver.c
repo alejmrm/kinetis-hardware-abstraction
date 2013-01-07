@@ -1,13 +1,13 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_NVICDriver.c  -  Copyright 2012-2013, stokeware
+*  NVICDriver.c  -  Copyright 2012-2013, stokeware
 *
-*  This file contains the MCU nested vectored interrupt controller driver class implementation.
+*  This file contains the nested vectored interrupt controller driver class implementation.
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
-#include "MCU_NVICDriver.h"
 #include "MCU_Types.h"
+#include "NVICDriver.h"
 
 /*****************************************************************************************************************************************************
 *
