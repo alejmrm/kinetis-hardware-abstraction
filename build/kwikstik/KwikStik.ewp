@@ -1830,9 +1830,6 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.h</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
       <file>
@@ -1840,6 +1837,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\PITDriver.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\SCBDriver.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\SIMDriver.h</name>
@@ -1866,13 +1866,13 @@
         <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.c</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\code\common\NVICDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\PITDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\SCBDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\SIMDriver.c</name>

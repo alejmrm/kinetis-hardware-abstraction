@@ -1,13 +1,13 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_SCBDriver.c  -  Copyright 2012-2013, stokeware
+*  SCBDriver.c  -  Copyright 2012-2013, stokeware
 *
-*  This file contains the MCU system control block driver class implementation.
+*  This file contains the system control block driver class implementation.
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
-#include "MCU_SCBDriver.h"
 #include "MCU_Types.h"
+#include "SCBDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -25,13 +25,6 @@ SCBDriver::SCBDriver(void)
  * This method is the destructor for the SCB driver class.
  */
 SCBDriver::~SCBDriver(void)
-{
-}
-/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
-/*
- * This static method initializes the SCB module.
- */
-void SCBDriver::InitModule(void)
 {
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
