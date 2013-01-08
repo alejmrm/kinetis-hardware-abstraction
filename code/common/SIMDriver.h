@@ -1,12 +1,12 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_SIMDriver.h  -  Copyright 2012-2013, stokeware
+*  SIMDriver.h  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the system integration module driver class interface.
 *
 *****************************************************************************************************************************************************/
-#ifndef MCU_SIM_DRIVER_H
-#define MCU_SIM_DRIVER_H
+#ifndef SIM_DRIVER_H
+#define SIM_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
 #include "MCU_PeriphDriver.h"

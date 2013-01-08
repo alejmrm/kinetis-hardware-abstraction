@@ -6,10 +6,10 @@
 *
 *****************************************************************************************************************************************************/
 #include "MCU_SCBDriver.h"
-#include "MCU_SIMDriver.h"
 #include "MCU_Types.h"
 #include "NVICDriver.h"
 #include "PITDriver.h"
+#include "SIMDriver.h"
 #include "VectorTable.h"
 
 PITDriver ctrlIntrptTmrDriver(PIT_TMR_1);
