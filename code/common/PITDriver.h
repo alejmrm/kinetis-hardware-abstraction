@@ -9,8 +9,8 @@
 #define PIT_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
+#include "CommonTypes.h"
 #include "MCU_PeriphDriver.h"
-#include "MCU_Types.h"
 
 /*****************************************************************************************************************************************************
 *

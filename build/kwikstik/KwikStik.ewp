@@ -1821,13 +1821,13 @@
     <group>
       <name>Common</name>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\CommonTypes.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\NVICDriver.h</name>

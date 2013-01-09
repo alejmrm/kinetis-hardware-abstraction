@@ -1,12 +1,12 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_Types.h  -  Copyright 2012, stokeware
+*  CommonTypes.h  -  Copyright 2012, stokeware
 *
 *  This file contains standard type definitions.
 *
 *****************************************************************************************************************************************************/
-#ifndef MCU_TYPES_H
-#define MCU_TYPES_H
+#ifndef COMMON_TYPES_H
+#define COMMON_TYPES_H
 
 #include <stdint.h>
 

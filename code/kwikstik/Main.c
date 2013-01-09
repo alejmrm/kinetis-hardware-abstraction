@@ -5,7 +5,7 @@
 *  This file contains the main function for the KwikStik test project.
 *
 *****************************************************************************************************************************************************/
-#include "MCU_Types.h"
+#include "CommonTypes.h"
 #include "NVICDriver.h"
 #include "PITDriver.h"
 #include "SCBDriver.h"
