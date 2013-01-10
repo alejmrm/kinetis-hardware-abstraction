@@ -17,13 +17,15 @@
 *  Type Definitions
 *
 *****************************************************************************************************************************************************/
-/*
- * This type defines the superset of available PIT timers. In general, for a specific MCU, only some of the timers are available.
- */
-typedef enum  {
-  PIT_TMR_0 = 0, PIT_TMR_1, PIT_TMR_2, PIT_TMR_3,
-  NUM_PIT_TMRS
-} pit_tmr;
+namespace PITType  {
+  /*
+   * This type defines the superset of available PIT timers. In general, for a specific MCU, only some of the timers are available.
+   */
+  typedef enum  {
+    TMR_0 = 0, TMR_1, TMR_2, TMR_3,
+    NUM_TMRS
+  } tmr;
+}
 
 /*****************************************************************************************************************************************************
 *
@@ -42,7 +44,7 @@ class PITDriver : public PeriphDriver
   /*
    * These methods are the constructor and destructor for the PIT driver class.
    */
-  PITDriver(pit_tmr tmr);
+  PITDriver(PITType::tmr tmr);
   ~PITDriver(void);
   /*
    * This static method enables the PIT module.
@@ -82,11 +84,11 @@ class PITDriver : public PeriphDriver
   /*
    * This static data member is a pointer to the PIT register structure, which encompasses all of the individual timers.
    */
-  static PIT_MemMapPtr pitReg;
+  static PIT_MemMapPtr moduleReg;
   /*
    * This data member is the timer managed by this class instance.
    */
-  pit_tmr tmr;
+  PITType::tmr tmr;
 };
 
 #endif

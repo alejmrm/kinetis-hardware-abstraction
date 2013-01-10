@@ -17,7 +17,7 @@
 /*
  * This static class data member is an array containing pointers to the PORT register structures for each of the ports.
  */
-PORT_MemMapPtr PORTDriver::portRegs[NUM_PORT_PORTS] = {PORTA_BASE_PTR, PORTB_BASE_PTR, PORTC_BASE_PTR, PORTD_BASE_PTR, PORTE_BASE_PTR};
+PORT_MemMapPtr PORTDriver::moduleReg[PORTType::NUM_PORTS] = {PORTA_BASE_PTR, PORTB_BASE_PTR, PORTC_BASE_PTR, PORTD_BASE_PTR, PORTE_BASE_PTR};
 
 /*****************************************************************************************************************************************************
 *
@@ -27,11 +27,11 @@ PORT_MemMapPtr PORTDriver::portRegs[NUM_PORT_PORTS] = {PORTA_BASE_PTR, PORTB_BAS
 /*
  * This method is the constructor for the PORT driver class.
  */
-PORTDriver::PORTDriver(port_pin pin)
+PORTDriver::PORTDriver(PORTType::pin pin)
 {
-  port = (port_port)((uint8)pin / NUM_PORT_PORT_PINS);
-  portPin = (port_port_pin)((uint8)pin % NUM_PORT_PORT_PINS);
-  portReg = portRegs[(uint8)port];
+  port = (PORTType::port)((uint8)pin / PORTType::NUM_PORT_PINS);
+  portPin = (PORTType::port_pin)((uint8)pin % PORTType::NUM_PORT_PINS);
+  portReg = moduleReg[(uint8)port];
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -55,7 +55,7 @@ void PORTDriver::ClearIntStatus(void)
 /*
  * This method configures the multiplexing mode for the pin managed by the class instance.
  */
-void PORTDriver::SetMuxMode(port_pin_mux_mode mode)
+void PORTDriver::SetMuxMode(PORTType::pin_mux_mode mode)
 {
   /*
    * Set the mux control bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.
@@ -67,7 +67,7 @@ void PORTDriver::SetMuxMode(port_pin_mux_mode mode)
 /*
  * This method configures the interrupt and DMA mode for the pin managed by the class instance.
  */
-void PORTDriver::SetIntDmaMode(port_pin_int_dma_mode mode)
+void PORTDriver::SetIntDmaMode(PORTType::pin_int_dma_mode mode)
 {
   /*
    * Set the interrupt configuration bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.

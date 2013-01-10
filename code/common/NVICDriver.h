@@ -16,15 +16,17 @@
 *  Type Definitions
 *
 *****************************************************************************************************************************************************/
-/*
- * This type defines the interrupts managed by the NVIC.
- */
-typedef enum  {
-  NVIC_INTRPT_PIT_0 = 68,
-  NVIC_INTRPT_PIT_1 = 69,
-  NVIC_INTRPT_PIT_2 = 70,
-  NVIC_INTRPT_PIT_3 = 71
-} nvic_intrpt;
+namespace NVICType  {
+  /*
+   * This type defines the interrupts managed by the NVIC.
+   */
+  typedef enum  {
+    INTRPT_PIT_0 = 68,
+    INTRPT_PIT_1 = 69,
+    INTRPT_PIT_2 = 70,
+    INTRPT_PIT_3 = 71
+  } intrpt;
+}
 
 /*****************************************************************************************************************************************************
 *
@@ -48,7 +50,7 @@ class NVICDriver : public CoreDriver
   /*
    * This static method enables the specified interrupt.
    */
-  static void EnableIntrpt(nvic_intrpt intrpt);
+  static void EnableIntrpt(NVICType::intrpt intrpt);
 
   /****************
    * Private Data
@@ -57,7 +59,7 @@ class NVICDriver : public CoreDriver
   /*
    * This static data member is a pointer to the NVIC register structure.
    */
-  static NVIC_MemMapPtr nvicReg;
+  static NVIC_MemMapPtr moduleReg;
 };
 
 #endif
