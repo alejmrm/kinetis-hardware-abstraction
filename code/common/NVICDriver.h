@@ -1,29 +1,15 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_NVICDriver.h  -  Copyright 2012-2013, stokeware
+*  NVICDriver.h  -  Copyright 2012-2013, stokeware
 *
-*  This file contains the MCU nested vectored interrupt controller driver class interface.
-*
-*****************************************************************************************************************************************************/
-#ifndef MCU_NVIC_DRIVER_H
-#define MCU_NVIC_DRIVER_H
-
-#include "MCU_PeriphDriver.h"
-
-/*****************************************************************************************************************************************************
-*
-*  Type Definitions
+*  This file contains the nested vectored interrupt controller driver class interface.
 *
 *****************************************************************************************************************************************************/
-/*
- * This type defines the interrupts managed by the NVIC.
- */
-typedef enum  {
-  NVIC_INTRPT_PIT_0 = 68,
-  NVIC_INTRPT_PIT_1 = 69,
-  NVIC_INTRPT_PIT_2 = 70,
-  NVIC_INTRPT_PIT_3 = 71
-} nvic_intrpt;
+#ifndef NVIC_DRIVER_H
+#define NVIC_DRIVER_H
+
+#include <freescale/MK40X256VMD100.h>
+#include "CoreDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -31,10 +17,24 @@ typedef enum  {
 *
 *****************************************************************************************************************************************************/
 /*
- * This class is the NVIC driver class. It is derived from the peripheral driver abstract base class.
+ * This class is the NVIC driver class. It is derived from the core driver abstract base class.
  */
-class NVICDriver : public MCUPeriphDriver
+class NVICDriver : public CoreDriver
 {
+  /****************
+   * Public Types
+   ***************/
+  public:
+  /*
+   * This type defines the interrupts managed by the NVIC.
+   */
+  typedef enum  {
+    INTRPT_PIT_0 = 68,
+    INTRPT_PIT_1 = 69,
+    INTRPT_PIT_2 = 70,
+    INTRPT_PIT_3 = 71
+  } intrpt_id;
+
   /******************
    * Public Methods
    *****************/
@@ -47,7 +47,7 @@ class NVICDriver : public MCUPeriphDriver
   /*
    * This static method enables the specified interrupt.
    */
-  static void EnableIntrpt(nvic_intrpt intrpt);
+  static void EnableIntrpt(NVICDriver::intrpt_id intrpt);
 
   /****************
    * Private Data
@@ -56,7 +56,7 @@ class NVICDriver : public MCUPeriphDriver
   /*
    * This static data member is a pointer to the NVIC register structure.
    */
-  static NVIC_MemMapPtr nvicReg;
+  static NVIC_MemMapPtr moduleReg;
 };
 
 #endif

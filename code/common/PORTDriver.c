@@ -1,13 +1,13 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_PortCtrlDriver.c  -  Copyright 2012, stokeware
+*  PORTDriver.c  -  Copyright 2012-2013, stokeware
 *
-*  This file contains the MCU port control and interrupt driver class implementation.
+*  This file contains the port control and interrupt driver class implementation.
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
-#include "MCU_PortCtrlDriver.h"
-#include "MCU_Types.h"
+#include "CommonTypes.h"
+#include "PORTDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -15,10 +15,9 @@
 *
 *****************************************************************************************************************************************************/
 /*
- * This static class data member is an array containing pointers to the MCU port control register structures for each of the ports.
+ * This static class data member is an array containing pointers to the PORT register structures for each of the ports.
  */
-PORT_MemMapPtr PortCtrlDriver::portCtrlPortRegs[NUM_PORT_CTRL_PORTS] = {PORTA_BASE_PTR, PORTB_BASE_PTR, PORTC_BASE_PTR,
-                                                                        PORTD_BASE_PTR, PORTE_BASE_PTR};
+PORT_MemMapPtr PORTDriver::moduleReg[PORTDriver::NUM_PORTS] = {PORTA_BASE_PTR, PORTB_BASE_PTR, PORTC_BASE_PTR, PORTD_BASE_PTR, PORTE_BASE_PTR};
 
 /*****************************************************************************************************************************************************
 *
@@ -26,26 +25,26 @@ PORT_MemMapPtr PortCtrlDriver::portCtrlPortRegs[NUM_PORT_CTRL_PORTS] = {PORTA_BA
 *
 *****************************************************************************************************************************************************/
 /*
- * This method is the constructor for the port control and interrupt peripheral driver class.
+ * This method is the constructor for the PORT driver class.
  */
-PortCtrlDriver::PortCtrlDriver(port_ctrl_pin pin)
+PORTDriver::PORTDriver(PORTDriver::pin_id pin)
 {
-  port = (port_ctrl_port)((uint8)pin / NUM_PORT_CTRL_PORT_PINS);
-  portPin = (port_ctrl_port_pin)((uint8)pin % NUM_PORT_CTRL_PORT_PINS);
-  portReg = portCtrlPortRegs[(uint8)port];
+  port = (PORTDriver::port_id)((uint8)pin / PORTDriver::NUM_PORT_PINS);
+  portPin = (PORTDriver::port_pin)((uint8)pin % PORTDriver::NUM_PORT_PINS);
+  portReg = moduleReg[(uint8)port];
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method is the destructor for the port control and interrupt peripheral driver class.
+ * This method is the destructor for the PORT driver class.
  */
-PortCtrlDriver::~PortCtrlDriver(void)
+PORTDriver::~PORTDriver(void)
 {
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
  * This method clears the interrupt status for the pin managed by the class instance.
  */
-void PortCtrlDriver::ClearIntStatus(void)
+void PORTDriver::ClearIntStatus(void)
 {
   /*
    * Write to the interrupt status flag bit in the pin control register corresponding to the pin to clear the interrupt status.
@@ -56,7 +55,7 @@ void PortCtrlDriver::ClearIntStatus(void)
 /*
  * This method configures the multiplexing mode for the pin managed by the class instance.
  */
-void PortCtrlDriver::SetMuxMode(port_ctrl_pin_mux_mode mode)
+void PORTDriver::SetMuxMode(PORTDriver::pin_mux_mode mode)
 {
   /*
    * Set the mux control bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.
@@ -68,7 +67,7 @@ void PortCtrlDriver::SetMuxMode(port_ctrl_pin_mux_mode mode)
 /*
  * This method configures the interrupt and DMA mode for the pin managed by the class instance.
  */
-void PortCtrlDriver::SetIntDmaMode(port_ctrl_pin_int_dma_mode mode)
+void PORTDriver::SetIntDmaMode(PORTDriver::pin_int_dma_mode mode)
 {
   /*
    * Set the interrupt configuration bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.

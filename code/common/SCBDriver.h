@@ -1,14 +1,15 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_SCBDriver.h  -  Copyright 2012, stokeware
+*  SCBDriver.h  -  Copyright 2012-2013, stokeware
 *
-*  This file contains the MCU system control block driver class interface.
+*  This file contains the system control block driver class interface.
 *
 *****************************************************************************************************************************************************/
-#ifndef MCU_SCB_DRIVER_H
-#define MCU_SCB_DRIVER_H
+#ifndef SCB_DRIVER_H
+#define SCB_DRIVER_H
 
-#include "MCU_PeriphDriver.h"
+#include <freescale/MK40X256VMD100.h>
+#include "CoreDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -16,9 +17,9 @@
 *
 *****************************************************************************************************************************************************/
 /*
- * This class is the SCB driver class. It is derived from the peripheral driver abstract base class.
+ * This class is the SCB driver class. It is derived from the core driver abstract base class.
  */
-class SCBDriver : public MCUPeriphDriver
+class SCBDriver : public CoreDriver
 {
   /******************
    * Public Methods
@@ -29,10 +30,6 @@ class SCBDriver : public MCUPeriphDriver
    */
   SCBDriver(void);
   ~SCBDriver(void);
-  /*
-   * This static method initializes the SCB module.
-   */
-  static void InitModule(void);
   /*
    * This static method sets the starting address of the vector table.
    */

@@ -1,18 +1,18 @@
 /*****************************************************************************************************************************************************
 *
-*  Main.c  -  Copyright 2012, stokeware
+*  Main.c  -  Copyright 2012-2013, stokeware
 *
 *  This file contains the main function for the KwikStik test project.
 *
 *****************************************************************************************************************************************************/
-#include "MCU_IntTmrDriver.h"
-#include "MCU_NVICDriver.h"
-#include "MCU_SCBDriver.h"
-#include "MCU_SIMDriver.h"
-#include "MCU_Types.h"
+#include "CommonTypes.h"
+#include "NVICDriver.h"
+#include "PITDriver.h"
+#include "SCBDriver.h"
+#include "SIMDriver.h"
 #include "VectorTable.h"
 
-IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
+PITDriver ctrlIntrptTmrDriver(PITDriver::TMR_1);
 
 /*****************************************************************************************************************************************************
 *
@@ -21,22 +21,19 @@ IntTmrDriver ctrlIntTmrDriver(INT_TMR_1);
 *****************************************************************************************************************************************************/
 int main(void)
 {
-  SCBDriver::InitModule();
   SCBDriver::SetVectorTableAddr(VectorTable::GetAddr());
+  SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_PIT);
+  NVICDriver::EnableIntrpt(NVICDriver::INTRPT_PIT_1);
 
-  SIMDriver::EnableSysClkGating(SIM_SYS_CLK_PIT);
-
-  NVICDriver::EnableIntrpt(NVIC_INTRPT_PIT_1);
-
-  IntTmrDriver::EnableModule();
-  ctrlIntTmrDriver.SetPeriod(10000);
-  ctrlIntTmrDriver.EnableInt();
-  ctrlIntTmrDriver.EnableTmr();
+  PITDriver::EnableModule();
+  ctrlIntrptTmrDriver.SetPeriod(10000);
+  ctrlIntrptTmrDriver.EnableIntrpt();
+  ctrlIntrptTmrDriver.EnableTmr();
 
   while (true) { }
 }
 
 void HandlePITInt(void)
 {
-  ctrlIntTmrDriver.ClearInt();
+  ctrlIntrptTmrDriver.ClearIntrpt();
 }

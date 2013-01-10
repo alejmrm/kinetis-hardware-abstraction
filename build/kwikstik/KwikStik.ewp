@@ -1821,28 +1821,31 @@
     <group>
       <name>Common</name>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\CommonTypes.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\CoreDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\GPIODriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\PeriphDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\PITDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\PORTDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_Types.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\SCBDriver.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\SIMDriver.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\VectorTable.h</name>
@@ -1857,25 +1860,28 @@
     <group>
       <name>Common</name>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_GPIODriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\CoreDriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_IntTmrDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\GPIODriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_NVICDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\PeriphDriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_PortCtrlDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\PITDriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_SCBDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\PORTDriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_SIMDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\SCBDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\SIMDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\VectorTable.c</name>
