@@ -9,7 +9,7 @@
 #define NVIC_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
-#include "PeriphDriver.h"
+#include "CoreDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -32,9 +32,9 @@ typedef enum  {
 *
 *****************************************************************************************************************************************************/
 /*
- * This class is the NVIC driver class. It is derived from the peripheral driver abstract base class.
+ * This class is the NVIC driver class. It is derived from the core driver abstract base class.
  */
-class NVICDriver : public PeriphDriver
+class NVICDriver : public CoreDriver
 {
   /******************
    * Public Methods

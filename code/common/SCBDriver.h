@@ -9,7 +9,7 @@
 #define SCB_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
-#include "PeriphDriver.h"
+#include "CoreDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -17,9 +17,9 @@
 *
 *****************************************************************************************************************************************************/
 /*
- * This class is the SCB driver class. It is derived from the peripheral driver abstract base class.
+ * This class is the SCB driver class. It is derived from the core driver abstract base class.
  */
-class SCBDriver : public PeriphDriver
+class SCBDriver : public CoreDriver
 {
   /******************
    * Public Methods
