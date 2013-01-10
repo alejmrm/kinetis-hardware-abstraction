@@ -1824,6 +1824,9 @@
         <name>$PROJ_DIR$\..\..\code\common\CommonTypes.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\CoreDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.h</name>
       </file>
       <file>
@@ -1856,6 +1859,9 @@
     <name>Source</name>
     <group>
       <name>Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\CoreDriver.c</name>
+      </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.c</name>
       </file>
