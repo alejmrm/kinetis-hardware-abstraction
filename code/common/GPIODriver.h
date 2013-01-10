@@ -13,28 +13,18 @@
 
 /*****************************************************************************************************************************************************
 *
-*  Type Definitions
+*  Class Definitions
 *
 *****************************************************************************************************************************************************/
-namespace GPIOType  {
-  /*
-   * This type defines the superset of available GPIO ports. In general, for a specific MCU, only some of the ports are available.
-   */
-  typedef enum  {
-    PORT_A = 0, PORT_B, PORT_C, PORT_D, PORT_E,
-    NUM_PORTS
-  } port;
-  /*
-   * This type defines the superset of pins that are available on each GPIO port. In general, for a specific MCU and port, only some of the pins are
-   * available.
-   */
-  typedef enum  {
-    PORT_PIN_0 = 0, PORT_PIN_1,  PORT_PIN_2,  PORT_PIN_3,  PORT_PIN_4,  PORT_PIN_5,  PORT_PIN_6,  PORT_PIN_7,
-    PORT_PIN_8,     PORT_PIN_9,  PORT_PIN_10, PORT_PIN_11, PORT_PIN_12, PORT_PIN_13, PORT_PIN_14, PORT_PIN_15,
-    PORT_PIN_16,    PORT_PIN_17, PORT_PIN_18, PORT_PIN_19, PORT_PIN_20, PORT_PIN_21, PORT_PIN_22, PORT_PIN_23,
-    PORT_PIN_24,    PORT_PIN_25, PORT_PIN_26, PORT_PIN_27, PORT_PIN_28, PORT_PIN_29, PORT_PIN_30, PORT_PIN_31,
-    NUM_PORT_PINS
-  } port_pin;
+/*
+ * This class is the GPIO driver class. It is derived from the MCU peripheral driver abstract base class.
+ */
+class GPIODriver : public PeriphDriver
+{
+  /****************
+   * Public Types
+   ***************/
+  public:
   /*
    * This type defines the superset of available GPIO pins. In general, for a specific MCU, only some of the pins are available.
    */
@@ -74,7 +64,7 @@ namespace GPIOType  {
     PIN_E8,     PIN_E9,  PIN_E10, PIN_E11, PIN_E12, PIN_E13, PIN_E14, PIN_E15,
     PIN_E16,    PIN_E17, PIN_E18, PIN_E19, PIN_E20, PIN_E21, PIN_E22, PIN_E23,
     PIN_E24,    PIN_E25, PIN_E26, PIN_E27, PIN_E28, PIN_E29, PIN_E30, PIN_E31
-  } pin;
+  } pin_id;
   /*
    * This type defines the GPIO pin directions.
    */
@@ -87,18 +77,30 @@ namespace GPIOType  {
   typedef enum  {
     PIN_LVL_LO = 0, PIN_LVL_HI
   } pin_lvl;
-}
 
-/*****************************************************************************************************************************************************
-*
-*  Class Definitions
-*
-*****************************************************************************************************************************************************/
-/*
- * This class is the GPIO driver class. It is derived from the MCU peripheral driver abstract base class.
- */
-class GPIODriver : public PeriphDriver
-{
+  /*****************
+   * Private Types
+   ****************/
+  private:
+  /*
+   * This type defines the superset of available GPIO ports. In general, for a specific MCU, only some of the ports are available.
+   */
+  typedef enum  {
+    PORT_A = 0, PORT_B, PORT_C, PORT_D, PORT_E,
+    NUM_PORTS
+  } port_id;
+  /*
+   * This type defines the superset of pins that are available on each GPIO port. In general, for a specific MCU and port, only some of the pins are
+   * available.
+   */
+  typedef enum  {
+    PORT_PIN_0 = 0, PORT_PIN_1,  PORT_PIN_2,  PORT_PIN_3,  PORT_PIN_4,  PORT_PIN_5,  PORT_PIN_6,  PORT_PIN_7,
+    PORT_PIN_8,     PORT_PIN_9,  PORT_PIN_10, PORT_PIN_11, PORT_PIN_12, PORT_PIN_13, PORT_PIN_14, PORT_PIN_15,
+    PORT_PIN_16,    PORT_PIN_17, PORT_PIN_18, PORT_PIN_19, PORT_PIN_20, PORT_PIN_21, PORT_PIN_22, PORT_PIN_23,
+    PORT_PIN_24,    PORT_PIN_25, PORT_PIN_26, PORT_PIN_27, PORT_PIN_28, PORT_PIN_29, PORT_PIN_30, PORT_PIN_31,
+    NUM_PORT_PINS
+  } port_pin;
+
   /******************
    * Public Methods
    *****************/
@@ -106,20 +108,20 @@ class GPIODriver : public PeriphDriver
   /*
    * These methods are the constructor and destructor for the GPIO driver class.
    */
-  GPIODriver(GPIOType::pin pin);
+  GPIODriver(GPIODriver::pin_id pin);
   ~GPIODriver(void);
   /*
    * This method sets the direction of the pin managed by the class instance.
    */
-  void SetDir(GPIOType::pin_dir dir);
+  void SetDir(GPIODriver::pin_dir dir);
   /*
    * This method sets the level of the pin managed by the class instance.
    */
-  void SetLvl(GPIOType::pin_lvl lvl);
+  void SetLvl(GPIODriver::pin_lvl lvl);
   /*
    * This method provides the level of the pin managed by the class instance.
    */
-  GPIOType::pin_lvl GetLvl(void);
+  GPIODriver::pin_lvl GetLvl(void);
 
   /****************
    * Private Data
@@ -128,15 +130,15 @@ class GPIODriver : public PeriphDriver
   /*
    * This data member is the GPIO port corresponding to the pin managed by the class instance.
    */
-  GPIOType::port port;
+  GPIODriver::port_id port;
   /*
    * This data member is the GPIO port pin corresponding to the pin managed by the class instance.
    */
-  GPIOType::port_pin portPin;
+  GPIODriver::port_pin portPin;
   /*
    * This static data member is an array containing pointers to the MCU register structures for each of the GPIO ports.
    */
-  static GPIO_MemMapPtr moduleReg[GPIOType::NUM_PORTS];
+  static GPIO_MemMapPtr moduleReg[GPIODriver::NUM_PORTS];
   /*
    * This data member is a pointer to the GPIO port register structure for the port managed by the class instance.
    */

@@ -27,7 +27,7 @@ PIT_MemMapPtr PITDriver::moduleReg = PIT_BASE_PTR;
 /*
  * This method is the constructor for the PIT driver class.
  */
-PITDriver::PITDriver(PITType::tmr tmr)
+PITDriver::PITDriver(PITDriver::tmr_id tmr)
 {
   this->tmr = tmr;
 }

@@ -41,7 +41,7 @@ NVICDriver::~NVICDriver(void)
 /*
  * This static method enables the specified interrupt.
  */
-void NVICDriver::EnableIntrpt(NVICType::intrpt intrpt)
+void NVICDriver::EnableIntrpt(NVICDriver::intrpt_id intrpt)
 {
   /*
    * Set the bit in the interrupt set-enable register corresponding to the specified interrupt.

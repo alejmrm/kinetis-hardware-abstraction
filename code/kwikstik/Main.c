@@ -12,7 +12,7 @@
 #include "SIMDriver.h"
 #include "VectorTable.h"
 
-PITDriver ctrlIntrptTmrDriver(PITType::TMR_1);
+PITDriver ctrlIntrptTmrDriver(PITDriver::TMR_1);
 
 /*****************************************************************************************************************************************************
 *
@@ -22,8 +22,8 @@ PITDriver ctrlIntrptTmrDriver(PITType::TMR_1);
 int main(void)
 {
   SCBDriver::SetVectorTableAddr(VectorTable::GetAddr());
-  SIMDriver::EnableSysClkGating(SIMType::SYS_CLK_PIT);
-  NVICDriver::EnableIntrpt(NVICType::INTRPT_PIT_1);
+  SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_PIT);
+  NVICDriver::EnableIntrpt(NVICDriver::INTRPT_PIT_1);
 
   PITDriver::EnableModule();
   ctrlIntrptTmrDriver.SetPeriod(10000);

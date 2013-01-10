@@ -13,28 +13,18 @@
 
 /*****************************************************************************************************************************************************
 *
-*  Type Definitions
+*  Class Definitions
 *
 *****************************************************************************************************************************************************/
-namespace PORTType  {
-  /*
-   * This type defines the superset of available ports. In general, for a specific MCU, only some of the ports are available.
-   */
-  typedef enum  {
-    PORT_A = 0, PORT_B, PORT_C, PORT_D, PORT_E,
-    NUM_PORTS
-  } port;
-  /*
-   * This type defines the superset of pins that are available on each port. In general, for a specific MCU and port, only some of the pins are
-   * available.
-   */
-  typedef enum  {
-    PORT_PIN_0 = 0, PORT_PIN_1,  PORT_PIN_2,  PORT_PIN_3,  PORT_PIN_4,  PORT_PIN_5,  PORT_PIN_6,  PORT_PIN_7,
-    PORT_PIN_8,     PORT_PIN_9,  PORT_PIN_10, PORT_PIN_11, PORT_PIN_12, PORT_PIN_13, PORT_PIN_14, PORT_PIN_15,
-    PORT_PIN_16,    PORT_PIN_17, PORT_PIN_18, PORT_PIN_19, PORT_PIN_20, PORT_PIN_21, PORT_PIN_22, PORT_PIN_23,
-    PORT_PIN_24,    PORT_PIN_25, PORT_PIN_26, PORT_PIN_27, PORT_PIN_28, PORT_PIN_29, PORT_PIN_30, PORT_PIN_31,
-    NUM_PORT_PINS
-  } port_pin;
+/*
+ * This class is the PORT driver class. It is derived from the peripheral driver abstract base class.
+ */
+class PORTDriver : public PeriphDriver
+{
+  /****************
+   * Public Types
+   ***************/
+  public:
   /*
    * This type defines the superset of available port pins. In general, for a specific MCU, only some of the pins are available.
    */
@@ -74,7 +64,7 @@ namespace PORTType  {
     PIN_E8,     PIN_E9,  PIN_E10, PIN_E11, PIN_E12, PIN_E13, PIN_E14, PIN_E15,
     PIN_E16,    PIN_E17, PIN_E18, PIN_E19, PIN_E20, PIN_E21, PIN_E22, PIN_E23,
     PIN_E24,    PIN_E25, PIN_E26, PIN_E27, PIN_E28, PIN_E29, PIN_E30, PIN_E31
-  } pin;
+  } pin_id;
   /*
    * This type defines the port multiplexing modes for which the pins can be configured.
    */
@@ -102,18 +92,30 @@ namespace PORTType  {
     PIN_INT_DMA_MODE_INT_EITHER_EDGE  = 11,
     PIN_INT_DMA_MODE_INT_LVL_HI       = 12
   } pin_int_dma_mode;
-}
 
-/*****************************************************************************************************************************************************
-*
-*  Class Definitions
-*
-*****************************************************************************************************************************************************/
-/*
- * This class is the PORT driver class. It is derived from the peripheral driver abstract base class.
- */
-class PORTDriver : public PeriphDriver
-{
+  /*****************
+   * Private Types
+   ****************/
+  private:
+  /*
+   * This type defines the superset of available ports. In general, for a specific MCU, only some of the ports are available.
+   */
+  typedef enum  {
+    PORT_A = 0, PORT_B, PORT_C, PORT_D, PORT_E,
+    NUM_PORTS
+  } port_id;
+  /*
+   * This type defines the superset of pins that are available on each port. In general, for a specific MCU and port, only some of the pins are
+   * available.
+   */
+  typedef enum  {
+    PORT_PIN_0 = 0, PORT_PIN_1,  PORT_PIN_2,  PORT_PIN_3,  PORT_PIN_4,  PORT_PIN_5,  PORT_PIN_6,  PORT_PIN_7,
+    PORT_PIN_8,     PORT_PIN_9,  PORT_PIN_10, PORT_PIN_11, PORT_PIN_12, PORT_PIN_13, PORT_PIN_14, PORT_PIN_15,
+    PORT_PIN_16,    PORT_PIN_17, PORT_PIN_18, PORT_PIN_19, PORT_PIN_20, PORT_PIN_21, PORT_PIN_22, PORT_PIN_23,
+    PORT_PIN_24,    PORT_PIN_25, PORT_PIN_26, PORT_PIN_27, PORT_PIN_28, PORT_PIN_29, PORT_PIN_30, PORT_PIN_31,
+    NUM_PORT_PINS
+  } port_pin;
+
   /******************
    * Public Methods
    *****************/
@@ -121,7 +123,7 @@ class PORTDriver : public PeriphDriver
   /*
    * These methods are the constructor and destructor for the PORT driver class.
    */
-  PORTDriver(PORTType::pin pin);
+  PORTDriver(PORTDriver::pin_id pin);
   ~PORTDriver(void);
   /*
    * This method clears the interrupt status for the pin managed by the class instance.
@@ -130,11 +132,11 @@ class PORTDriver : public PeriphDriver
   /*
    * This method configures the multiplexing mode for the pin managed by the class instance.
    */
-  void SetMuxMode(PORTType::pin_mux_mode mode);
+  void SetMuxMode(PORTDriver::pin_mux_mode mode);
   /*
    * This method configures the interrupt and DMA mode for the pin managed by the class instance.
    */
-  void SetIntDmaMode(PORTType::pin_int_dma_mode mode);
+  void SetIntDmaMode(PORTDriver::pin_int_dma_mode mode);
 
   /****************
    * Private Data
@@ -143,15 +145,15 @@ class PORTDriver : public PeriphDriver
   /*
    * This data member is the port corresponding to the pin managed by the class instance.
    */
-  PORTType::port port;
+  PORTDriver::port_id port;
   /*
    * This data member is the port pin corresponding to the pin managed by the class instance.
    */
-  PORTType::port_pin portPin;
+  PORTDriver::port_pin portPin;
   /*
    * This static data member is an array containing pointers to the PORT register structures for each of the ports.
    */
-  static PORT_MemMapPtr moduleReg[PORTType::NUM_PORTS];
+  static PORT_MemMapPtr moduleReg[PORTDriver::NUM_PORTS];
   /*
    * This data member is a pointer to the PORT register structure for the port managed by the class instance.
    */

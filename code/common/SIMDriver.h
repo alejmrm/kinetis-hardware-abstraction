@@ -14,34 +14,6 @@
 
 /*****************************************************************************************************************************************************
 *
-*  Constant Definitions
-*
-*****************************************************************************************************************************************************/
-namespace SIMType  {
-  /*
-   * This constant defines the number of system clock gating control registers managed by the SIM.
-   */
-  enum  {
-    NUM_SYS_CLK_GATING_CTRL_REGS = 7
-  };
-}
-
-/*****************************************************************************************************************************************************
-*
-*  Type Definitions
-*
-*****************************************************************************************************************************************************/
-namespace SIMType  {
-  /*
-   * This type defines the system clocks whose operations are gated by the SIM.
-   */
-  typedef enum  {
-    SYS_CLK_PIT = ((5 * 32) + 23)    // Periodic interrupt timer
-  } sys_clk;
-}
-
-/*****************************************************************************************************************************************************
-*
 *  Class Definitions
 *
 *****************************************************************************************************************************************************/
@@ -50,6 +22,28 @@ namespace SIMType  {
  */
 class SIMDriver : public PeriphDriver
 {
+  /*********************
+   * Private Constants
+   ********************/
+  private:
+  /*
+   * This constant defines the number of system clock gating control registers managed by the SIM.
+   */
+  enum  {
+    NUM_SYS_CLK_GATING_CTRL_REGS = 7
+  };
+
+  /****************
+   * Public Types
+   ***************/
+  public:
+  /*
+   * This type defines the system clocks whose operations are gated by the SIM.
+   */
+  typedef enum  {
+    SYS_CLK_PIT = ((5 * 32) + 23)    // Periodic interrupt timer
+  } sys_clk;
+
   /******************
    * Public Methods
    *****************/
@@ -62,8 +56,8 @@ class SIMDriver : public PeriphDriver
   /*
    * These static methods enable and disable gating to the specified system clock.
    */
-  static void EnableSysClkGating(SIMType::sys_clk clk);
-  static void DisableSysClkGating(SIMType::sys_clk clk);
+  static void EnableSysClkGating(SIMDriver::sys_clk clk);
+  static void DisableSysClkGating(SIMDriver::sys_clk clk);
 
   /****************
    * Private Data
@@ -76,7 +70,7 @@ class SIMDriver : public PeriphDriver
   /*
    * This static data member is an array of pointers to the system clock gating control registers.
    */
-  static volatile uint32* sysClkGateCtrlReg[SIMType::NUM_SYS_CLK_GATING_CTRL_REGS];
+  static volatile uint32* sysClkGateCtrlReg[SIMDriver::NUM_SYS_CLK_GATING_CTRL_REGS];
 };
 
 #endif
