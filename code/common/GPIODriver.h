@@ -9,7 +9,7 @@
 #define GPIO_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
-#include "MCU_PeriphDriver.h"
+#include "PeriphDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -95,7 +95,7 @@ typedef enum  {
 /*
  * This class is the GPIO driver class. It is derived from the MCU peripheral driver abstract base class.
  */
-class GPIODriver : public MCUPeriphDriver
+class GPIODriver : public PeriphDriver
 {
   /******************
    * Public Methods

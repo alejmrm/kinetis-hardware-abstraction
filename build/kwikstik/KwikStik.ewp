@@ -1827,10 +1827,10 @@
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.h</name>
+        <name>$PROJ_DIR$\..\..\code\common\PeriphDriver.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\PITDriver.h</name>
@@ -1860,10 +1860,10 @@
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\MCU_PeriphDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\code\common\NVICDriver.c</name>
+        <name>$PROJ_DIR$\..\..\code\common\PeriphDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\PITDriver.c</name>

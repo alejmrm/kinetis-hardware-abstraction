@@ -10,7 +10,7 @@
 
 #include <freescale/MK40X256VMD100.h>
 #include "CommonTypes.h"
-#include "MCU_PeriphDriver.h"
+#include "PeriphDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -33,7 +33,7 @@ typedef enum  {
 /*
  * This class is the PIT driver class. It is derived from the peripheral driver abstract base class.
  */
-class PITDriver : public MCUPeriphDriver
+class PITDriver : public PeriphDriver
 {
   /******************
    * Public Methods

@@ -10,7 +10,7 @@
 
 #include <freescale/MK40X256VMD100.h>
 #include "CommonTypes.h"
-#include "MCU_PeriphDriver.h"
+#include "PeriphDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -42,7 +42,7 @@ typedef enum  {
 /*
  * This class is the SIM driver class. It is derived from the peripheral driver abstract base class.
  */
-class SIMDriver : public MCUPeriphDriver
+class SIMDriver : public PeriphDriver
 {
   /******************
    * Public Methods

@@ -9,7 +9,7 @@
 #define PORT_DRIVER_H
 
 #include <freescale/MK40X256VMD100.h>
-#include "MCU_PeriphDriver.h"
+#include "PeriphDriver.h"
 
 /*****************************************************************************************************************************************************
 *
@@ -110,7 +110,7 @@ typedef enum  {
 /*
  * This class is the PORT driver class. It is derived from the peripheral driver abstract base class.
  */
-class PORTDriver : public MCUPeriphDriver
+class PORTDriver : public PeriphDriver
 {
   /******************
    * Public Methods

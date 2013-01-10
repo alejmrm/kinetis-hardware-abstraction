@@ -1,18 +1,31 @@
 /*****************************************************************************************************************************************************
 *
-*  MCU_PeriphDriver.c  -  Copyright 2012, stokeware
+*  PeriphDriver.h  -  Copyright 2012-2013, stokeware
 *
-*  This file contains the MCU peripheral driver class implementation.
+*  This file contains the MCU peripheral driver class interface.
 *
 *****************************************************************************************************************************************************/
-#include "MCU_PeriphDriver.h"
+#ifndef PERIPH_DRIVER_H
+#define PERIPH_DRIVER_H
 
 /*****************************************************************************************************************************************************
 *
-*  Public Methods
+*  Class Definitions
 *
 *****************************************************************************************************************************************************/
 /*
- * This method is the pure virtual destructor for the peripheral driver abstract base class.
+ * This class is the peripheral driver abstract base class.
  */
-MCUPeriphDriver::~MCUPeriphDriver(void)  { }
+class PeriphDriver
+{
+  /******************
+   * Public Methods
+   *****************/
+  public:
+  /*
+   * This method is the pure virtual destructor for the peripheral driver abstract base class.
+   */
+  virtual ~PeriphDriver(void) = 0;
+};
+
+#endif
