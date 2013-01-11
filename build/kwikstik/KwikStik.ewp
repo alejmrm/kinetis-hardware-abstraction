@@ -1848,6 +1848,9 @@
         <name>$PROJ_DIR$\..\..\code\common\SIMDriver.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\SLCDDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\VectorTable.h</name>
       </file>
     </group>
@@ -1882,6 +1885,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\SIMDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\SLCDDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\VectorTable.c</name>
