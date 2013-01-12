@@ -12,33 +12,6 @@
 
 /*****************************************************************************************************************************************************
 *
-*  Constant Definitions
-*
-*****************************************************************************************************************************************************/
-/*
- * This constant defines the number of interrupt service routines contained in the vector table.
- */
-#define NUM_VECTOR_TABLE_ISR  110
-
-/*****************************************************************************************************************************************************
-*
-*  Type Definitions
-*
-*****************************************************************************************************************************************************/
-/*
- * This type defines the signature of interrupt service routines appearing in the vector table.
- */
-typedef void vector_table_isr(void);
-/*
- * This type defines the interrupt vector table structure.
- */
-typedef struct {
-  void*             stackPtr;                     // Initial stack pointer
-  vector_table_isr* isr[NUM_VECTOR_TABLE_ISR];    // Array of pointers to interrupt service routines
-} vector_table;
-
-/*****************************************************************************************************************************************************
-*
 *  Class Definitions
 *
 *****************************************************************************************************************************************************/
@@ -47,6 +20,36 @@ typedef struct {
  */
 class VectorTable
 {
+  /*********************
+   * Private Constants
+   ********************/
+  private:
+  /*
+   * This constant defines the number of interrupt service routines contained in the vector table.
+   */
+  enum {NUM_ISRS = 110};
+
+  /****************
+   * Public Types
+   ***************/
+  public:
+  /*
+   * This type defines the signature of interrupt service routines appearing in the vector table.
+   */
+  typedef void isr(void);
+
+  /*****************
+   * Private Types
+   ****************/
+  private:
+  /*
+   * This type defines the interrupt vector table format.
+   */
+  typedef struct {
+    void* stackPtr;            // Initial stack pointer
+    isr*  isrPtr[NUM_ISRS];    // Array of pointers to interrupt service routines
+  } table_format;
+
   /******************
    * Public Methods
    *****************/
@@ -76,7 +79,7 @@ class VectorTable
   /*
    * This static constant data member is the interrupt vector table.
    */
-  static const vector_table vectorTable;
+  static const table_format table;
 };
 
 #endif

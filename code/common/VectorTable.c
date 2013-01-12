@@ -49,7 +49,7 @@ void VectorTable::DefaultIsr(void)
 #pragma segment = "CSTACK"
 #pragma location = ".vectortable"
 
-const vector_table VectorTable::vectorTable = {
+const VectorTable::table_format VectorTable::table = {
   __sfe("CSTACK"),              // 0x0000 - ARM core: Initial stack pointer
   {
     __iar_program_start,        // 0x0004 - ARM core: Initial program counter
@@ -189,5 +189,5 @@ VectorTable::~VectorTable(void)
  */
 void* VectorTable::GetAddr(void)
 {
-  return (void*)&VectorTable::vectorTable;
+  return (void*)&VectorTable::table;
 }
