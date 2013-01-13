@@ -34,6 +34,15 @@ class VectorTable
    ***************/
   public:
   /*
+   * This type defines the interrupts supported by the vector table class.
+   */
+  typedef enum  {
+    INTRPT_PIT_0 = 84,
+    INTRPT_PIT_1 = 85,
+    INTRPT_PIT_2 = 86,
+    INTRPT_PIT_3 = 87
+  } intrpt_id;
+  /*
    * This type defines the signature of interrupt service routines appearing in the vector table.
    */
   typedef void isr(void);
@@ -67,6 +76,14 @@ class VectorTable
    * This static method provides the starting vector table address.
    */
   static void* GetAddr(void);
+  /*
+   * This static method sets the vector table entry corresponding to the specified interrupt to the specified interrupt service routine.
+   */
+  static void SetIsr(intrpt_id intrpt, isr* isrPtr);
+  /*
+   * This static method clears the vector table entry corresponding to the specified interrupt.
+   */
+  static void ClearIsr(intrpt_id intrpt);
 
   /*******************
    * Private Methods

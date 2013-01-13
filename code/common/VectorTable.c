@@ -208,3 +208,19 @@ void* VectorTable::GetAddr(void)
 {
   return (void*)&VectorTable::ramTable;
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method sets the vector table entry corresponding to the specified interrupt to the specified interrupt service routine.
+ */
+void VectorTable::SetIsr(VectorTable::intrpt_id intrpt, VectorTable::isr* isrPtr)
+{
+  VectorTable::ramTable.isrPtr[(uint8)intrpt] = isrPtr;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method clears the vector table entry corresponding to the specified interrupt.
+ */
+void VectorTable::ClearIsr(VectorTable::intrpt_id intrpt)
+{
+  VectorTable::ramTable.isrPtr[(uint8)intrpt] = DefaultIsr;
+}
