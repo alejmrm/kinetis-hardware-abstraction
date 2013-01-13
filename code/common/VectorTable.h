@@ -37,10 +37,10 @@ class VectorTable
    * This type defines the interrupts supported by the vector table class.
    */
   typedef enum  {
-    INTRPT_PIT_0 = 84,
-    INTRPT_PIT_1 = 85,
-    INTRPT_PIT_2 = 86,
-    INTRPT_PIT_3 = 87
+    INTRPT_PIT_0 = 83,
+    INTRPT_PIT_1 = 84,
+    INTRPT_PIT_2 = 85,
+    INTRPT_PIT_3 = 86
   } intrpt_id;
   /*
    * This type defines the signature of interrupt service routines appearing in the vector table.

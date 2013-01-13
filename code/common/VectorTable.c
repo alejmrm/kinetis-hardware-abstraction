@@ -20,10 +20,6 @@
 extern "C"  {
   void __iar_program_start(void);
 }
-/*
- * This function is the periodic interrupt timer interrupt service routine.
- */
-void HandlePITInt(void);
 
 /*****************************************************************************************************************************************************
 *
@@ -136,7 +132,7 @@ const VectorTable::table VectorTable::flashTable = {
     VectorTable::DefaultIsr,    // 0x0148
     VectorTable::DefaultIsr,    // 0x014C
     VectorTable::DefaultIsr,    // 0x0150 - PIT: Channel 0
-    HandlePITInt,               // 0x0154 - PIT: Channel 1
+    VectorTable::DefaultIsr,    // 0x0154 - PIT: Channel 1
     VectorTable::DefaultIsr,    // 0x0158 - PIT: Channel 2
     VectorTable::DefaultIsr,    // 0x015C - PIT: Channel 3
     VectorTable::DefaultIsr,    // 0x0160
