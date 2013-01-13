@@ -5,7 +5,7 @@
 *  This file contains the interrupt vector table class implementation.
 *
 *****************************************************************************************************************************************************/
-#include <freescale/MK40X256VMD100.h>
+#include <string.h>
 #include "CommonTypes.h"
 #include "VectorTable.h"
 
@@ -44,7 +44,7 @@ void VectorTable::DefaultIsr(void)
 *
 *****************************************************************************************************************************************************/
 /*
- * This static constant data member is the interrupt vector table.
+ * This static constant data member is the copy of the interrupt vector table stored in flash memory.
  */
 #pragma segment = "CSTACK"
 #pragma location = ".flash_table"
@@ -164,6 +164,12 @@ const VectorTable::table VectorTable::flashTable = {
     VectorTable::DefaultIsr     // 0x01B8
   }
 };
+/*
+ * This static constant data member is the copy of the interrupt vector table stored in RAM memory.
+ */
+#pragma data_alignment = 512
+
+VectorTable::table VectorTable::ramTable;
 
 /*****************************************************************************************************************************************************
 *
@@ -185,9 +191,20 @@ VectorTable::~VectorTable(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
+ * This static method initializes the vector table functionality.
+ */
+void VectorTable::Init(void)
+{
+  /*
+   * Copy the contents of the vector table in flash memory to its RAM location.
+   */
+  memcpy(&VectorTable::ramTable, &VectorTable::flashTable, sizeof(VectorTable::table));
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
  * This static method provides the starting vector table address.
  */
 void* VectorTable::GetAddr(void)
 {
-  return (void*)&VectorTable::flashTable;
+  return (void*)&VectorTable::ramTable;
 }

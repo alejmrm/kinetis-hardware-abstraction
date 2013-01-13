@@ -60,6 +60,10 @@ class VectorTable
   VectorTable(void);
   ~VectorTable(void);
   /*
+   * This static method initializes the vector table functionality.
+   */
+  static void Init(void);
+  /*
    * This static method provides the starting vector table address.
    */
   static void* GetAddr(void);
@@ -77,9 +81,13 @@ class VectorTable
    * Private Data
    ***************/
   /*
-   * This static constant data member is the interrupt vector table stored in flash memory.
+   * This static constant data member is the copy of the interrupt vector table stored in flash memory.
    */
   static const table flashTable;
+  /*
+   * This static data member is the copy of the interrupt vector table stored in RAM memory.
+   */
+  static table ramTable;
 };
 
 #endif
