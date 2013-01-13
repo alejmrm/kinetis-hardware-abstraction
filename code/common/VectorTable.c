@@ -47,9 +47,9 @@ void VectorTable::DefaultIsr(void)
  * This static constant data member is the interrupt vector table.
  */
 #pragma segment = "CSTACK"
-#pragma location = ".vectortable"
+#pragma location = ".flash_table"
 
-const VectorTable::table_format VectorTable::table = {
+const VectorTable::table VectorTable::flashTable = {
   __sfe("CSTACK"),              // 0x0000 - ARM core: Initial stack pointer
   {
     __iar_program_start,        // 0x0004 - ARM core: Initial program counter
@@ -189,5 +189,5 @@ VectorTable::~VectorTable(void)
  */
 void* VectorTable::GetAddr(void)
 {
-  return (void*)&VectorTable::table;
+  return (void*)&VectorTable::flashTable;
 }

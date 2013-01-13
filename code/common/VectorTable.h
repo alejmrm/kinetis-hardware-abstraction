@@ -48,7 +48,7 @@ class VectorTable
   typedef struct {
     void* stackPtr;            // Initial stack pointer
     isr*  isrPtr[NUM_ISRS];    // Array of pointers to interrupt service routines
-  } table_format;
+  } table;
 
   /******************
    * Public Methods
@@ -77,9 +77,9 @@ class VectorTable
    * Private Data
    ***************/
   /*
-   * This static constant data member is the interrupt vector table.
+   * This static constant data member is the interrupt vector table stored in flash memory.
    */
-  static const table_format table;
+  static const table flashTable;
 };
 
 #endif
