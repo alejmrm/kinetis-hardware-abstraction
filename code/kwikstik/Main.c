@@ -15,6 +15,11 @@
 
 PITDriver ctrlIntrptTmrDriver(PITDriver::TMR_1);
 
+void HandlePITInt(void)
+{
+  ctrlIntrptTmrDriver.ClearIntrpt();
+}
+
 /*****************************************************************************************************************************************************
 *
 *  Public Functions
@@ -22,8 +27,11 @@ PITDriver ctrlIntrptTmrDriver(PITDriver::TMR_1);
 *****************************************************************************************************************************************************/
 int main(void)
 {
+  VectorTable::Init();
   SCBDriver::SetVectorTableAddr(VectorTable::GetAddr());
   SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_PIT);
+
+  VectorTable::SetIsr(VectorTable::INTRPT_PIT_1, HandlePITInt);
   NVICDriver::EnableIntrpt(NVICDriver::INTRPT_PIT_1);
 
   SLCDDriver::InitModule();
