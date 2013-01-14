@@ -80,84 +80,84 @@ const VectorTable::table VectorTable::flashTable = {
     VectorTable::DefaultIsr,    // 0x0078 - DMA: Channel 14 transfer complete
     VectorTable::DefaultIsr,    // 0x007C - DMA: Channel 15 transfer complete
     VectorTable::DefaultIsr,    // 0x0080 - DMA: Error interrupt channels 0-15
-    VectorTable::DefaultIsr,    // 0x0084
-    VectorTable::DefaultIsr,    // 0x0088
-    VectorTable::DefaultIsr,    // 0x008C
-    VectorTable::DefaultIsr,    // 0x0090
-    VectorTable::DefaultIsr,    // 0x0094
-    VectorTable::DefaultIsr,    // 0x0098
+    VectorTable::DefaultIsr,    // 0x0084 - MCM: Normal interrupt
+    VectorTable::DefaultIsr,    // 0x0088 - Flash memory: Command complete
+    VectorTable::DefaultIsr,    // 0x008C - Flash memory: Read collision
+    VectorTable::DefaultIsr,    // 0x0090 - Mode controller: Low-voltage detect, low-voltage warning
+    VectorTable::DefaultIsr,    // 0x0094 - LLWU: Low leakage wakeup
+    VectorTable::DefaultIsr,    // 0x0098 - WDOG or EWM: Watchdog
     VectorTable::DefaultIsr,    // 0x009C
-    VectorTable::DefaultIsr,    // 0x00A0
-    VectorTable::DefaultIsr,    // 0x00A4
-    VectorTable::DefaultIsr,    // 0x00A8
-    VectorTable::DefaultIsr,    // 0x00AC
-    VectorTable::DefaultIsr,    // 0x00B0
-    VectorTable::DefaultIsr,    // 0x00B4
-    VectorTable::DefaultIsr,    // 0x00B8
-    VectorTable::DefaultIsr,    // 0x00BC
-    VectorTable::DefaultIsr,    // 0x00C0
-    VectorTable::DefaultIsr,    // 0x00C4
-    VectorTable::DefaultIsr,    // 0x00C8
-    VectorTable::DefaultIsr,    // 0x00CC
-    VectorTable::DefaultIsr,    // 0x00D0
-    VectorTable::DefaultIsr,    // 0x00D4
-    VectorTable::DefaultIsr,    // 0x00D8
-    VectorTable::DefaultIsr,    // 0x00DC
-    VectorTable::DefaultIsr,    // 0x00E0
-    VectorTable::DefaultIsr,    // 0x00E4
-    VectorTable::DefaultIsr,    // 0x00E8
+    VectorTable::DefaultIsr,    // 0x00A0 - I2C0
+    VectorTable::DefaultIsr,    // 0x00A4 - I2C1
+    VectorTable::DefaultIsr,    // 0x00A8 - SPI0: All sources
+    VectorTable::DefaultIsr,    // 0x00AC - SPI1: All sources
+    VectorTable::DefaultIsr,    // 0x00B0 - SPI2: All sources
+    VectorTable::DefaultIsr,    // 0x00B4 - CAN0: OR'ed message buffer
+    VectorTable::DefaultIsr,    // 0x00B8 - CAN0: Bus off
+    VectorTable::DefaultIsr,    // 0x00BC - CAN0: Error
+    VectorTable::DefaultIsr,    // 0x00C0 - CAN0: Transmit warning
+    VectorTable::DefaultIsr,    // 0x00C4 - CAN0: Receive warning
+    VectorTable::DefaultIsr,    // 0x00C8 - CAN0: Wake up
+    VectorTable::DefaultIsr,    // 0x00CC - I2S0: Transmit
+    VectorTable::DefaultIsr,    // 0x00D0 - I2S0: Receive
+    VectorTable::DefaultIsr,    // 0x00D4 - CAN1: OR'ed message buffer
+    VectorTable::DefaultIsr,    // 0x00D8 - CAN1: Bus off
+    VectorTable::DefaultIsr,    // 0x00DC - CAN1: Error
+    VectorTable::DefaultIsr,    // 0x00E0 - CAN1: Transmit warning
+    VectorTable::DefaultIsr,    // 0x00E4 - CAN1: Receive warning
+    VectorTable::DefaultIsr,    // 0x00E8 - CAN1: Wake up
     VectorTable::DefaultIsr,    // 0x00EC
-    VectorTable::DefaultIsr,    // 0x00F0
-    VectorTable::DefaultIsr,    // 0x00F4
-    VectorTable::DefaultIsr,    // 0x00F8
-    VectorTable::DefaultIsr,    // 0x00FC
-    VectorTable::DefaultIsr,    // 0x0100
-    VectorTable::DefaultIsr,    // 0x0104
-    VectorTable::DefaultIsr,    // 0x0108
-    VectorTable::DefaultIsr,    // 0x010C
-    VectorTable::DefaultIsr,    // 0x0110
-    VectorTable::DefaultIsr,    // 0x0114
-    VectorTable::DefaultIsr,    // 0x0118
-    VectorTable::DefaultIsr,    // 0x011C
-    VectorTable::DefaultIsr,    // 0x0120
-    VectorTable::DefaultIsr,    // 0x0124
-    VectorTable::DefaultIsr,    // 0x0128
-    VectorTable::DefaultIsr,    // 0x012C
-    VectorTable::DefaultIsr,    // 0x0130
-    VectorTable::DefaultIsr,    // 0x0134
-    VectorTable::DefaultIsr,    // 0x0138
-    VectorTable::DefaultIsr,    // 0x013C
-    VectorTable::DefaultIsr,    // 0x0140
-    VectorTable::DefaultIsr,    // 0x0144
-    VectorTable::DefaultIsr,    // 0x0148
-    VectorTable::DefaultIsr,    // 0x014C
+    VectorTable::DefaultIsr,    // 0x00F0 - UART0: All LON sources
+    VectorTable::DefaultIsr,    // 0x00F4 - UART0: All status sources
+    VectorTable::DefaultIsr,    // 0x00F8 - UART0: All error sources
+    VectorTable::DefaultIsr,    // 0x00FC - UART1: All status sources
+    VectorTable::DefaultIsr,    // 0x0100 - UART1: All error sources
+    VectorTable::DefaultIsr,    // 0x0104 - UART2: All status sources
+    VectorTable::DefaultIsr,    // 0x0108 - UART2: All error sources
+    VectorTable::DefaultIsr,    // 0x010C - UART3: All status sources
+    VectorTable::DefaultIsr,    // 0x0110 - UART3: All error sources
+    VectorTable::DefaultIsr,    // 0x0114 - UART4: All status sources
+    VectorTable::DefaultIsr,    // 0x0118 - UART4: All error sources
+    VectorTable::DefaultIsr,    // 0x011C - UART5: All status sources
+    VectorTable::DefaultIsr,    // 0x0120 - UART5: All error sources
+    VectorTable::DefaultIsr,    // 0x0124 - ADC0
+    VectorTable::DefaultIsr,    // 0x0128 - ADC1
+    VectorTable::DefaultIsr,    // 0x012C - CMP0
+    VectorTable::DefaultIsr,    // 0x0130 - CMP1
+    VectorTable::DefaultIsr,    // 0x0134 - CMP2
+    VectorTable::DefaultIsr,    // 0x0138 - FTM0: All sources
+    VectorTable::DefaultIsr,    // 0x013C - FTM1: All sources
+    VectorTable::DefaultIsr,    // 0x0140 - FTM2: All sources
+    VectorTable::DefaultIsr,    // 0x0144 - CMT
+    VectorTable::DefaultIsr,    // 0x0148 - RTC: Alarm interrupt
+    VectorTable::DefaultIsr,    // 0x014C - RTC: Seconds interrupt
     VectorTable::DefaultIsr,    // 0x0150 - PIT: Channel 0
     VectorTable::DefaultIsr,    // 0x0154 - PIT: Channel 1
     VectorTable::DefaultIsr,    // 0x0158 - PIT: Channel 2
     VectorTable::DefaultIsr,    // 0x015C - PIT: Channel 3
-    VectorTable::DefaultIsr,    // 0x0160
-    VectorTable::DefaultIsr,    // 0x0164
-    VectorTable::DefaultIsr,    // 0x0168
+    VectorTable::DefaultIsr,    // 0x0160 - PDB
+    VectorTable::DefaultIsr,    // 0x0164 - USB OTG
+    VectorTable::DefaultIsr,    // 0x0168 - USB charger detect
     VectorTable::DefaultIsr,    // 0x016C
     VectorTable::DefaultIsr,    // 0x0170
     VectorTable::DefaultIsr,    // 0x0174
     VectorTable::DefaultIsr,    // 0x0178
     VectorTable::DefaultIsr,    // 0x017C
-    VectorTable::DefaultIsr,    // 0x0180
-    VectorTable::DefaultIsr,    // 0x0184
-    VectorTable::DefaultIsr,    // 0x0188
-    VectorTable::DefaultIsr,    // 0x018C
-    VectorTable::DefaultIsr,    // 0x0190
-    VectorTable::DefaultIsr,    // 0x0194
-    VectorTable::DefaultIsr,    // 0x0198
-    VectorTable::DefaultIsr,    // 0x019C
-    VectorTable::DefaultIsr,    // 0x01A0
-    VectorTable::DefaultIsr,    // 0x01A4
-    VectorTable::DefaultIsr,    // 0x01A8
-    VectorTable::DefaultIsr,    // 0x01AC
+    VectorTable::DefaultIsr,    // 0x0180 - SDHC
+    VectorTable::DefaultIsr,    // 0x0184 - DAC0
+    VectorTable::DefaultIsr,    // 0x0188 - DAC1
+    VectorTable::DefaultIsr,    // 0x018C - TSI: All sources
+    VectorTable::DefaultIsr,    // 0x0190 - MCG
+    VectorTable::DefaultIsr,    // 0x0194 - Low power timer
+    VectorTable::DefaultIsr,    // 0x0198 - Segment LCD: All sources
+    VectorTable::DefaultIsr,    // 0x019C - Port control module: Pin detect (Port A)
+    VectorTable::DefaultIsr,    // 0x01A0 - Port control module: Pin detect (Port B)
+    VectorTable::DefaultIsr,    // 0x01A4 - Port control module: Pin detect (Port C)
+    VectorTable::DefaultIsr,    // 0x01A8 - Port control module: Pin detect (Port D)
+    VectorTable::DefaultIsr,    // 0x01AC - Port control module: Pin detect (Port E)
     VectorTable::DefaultIsr,    // 0x01B0
     VectorTable::DefaultIsr,    // 0x01B4
-    VectorTable::DefaultIsr     // 0x01B8
+    VectorTable::DefaultIsr     // 0x01B8 - Software: Software interrupt
   }
 };
 /*
@@ -210,7 +210,7 @@ void* VectorTable::GetAddr(void)
  */
 void VectorTable::SetIsr(VectorTable::intrpt_id intrpt, VectorTable::isr* isrPtr)
 {
-  VectorTable::ramTable.isrPtr[(uint8)intrpt] = isrPtr;
+  VectorTable::ramTable.isrPtr[(uint8)intrpt-1] = isrPtr;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -218,5 +218,5 @@ void VectorTable::SetIsr(VectorTable::intrpt_id intrpt, VectorTable::isr* isrPtr
  */
 void VectorTable::ClearIsr(VectorTable::intrpt_id intrpt)
 {
-  VectorTable::ramTable.isrPtr[(uint8)intrpt] = DefaultIsr;
+  VectorTable::ramTable.isrPtr[(uint8)intrpt-1] = DefaultIsr;
 }
