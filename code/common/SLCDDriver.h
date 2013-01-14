@@ -35,6 +35,15 @@ class SLCDDriver : public PeriphDriver
    */
   SLCDDriver(void);
   ~SLCDDriver(void);
+  /*
+   * This static method initializes the SLCD module.
+   */
+  static void InitModule(void);
+  /*
+   * These static methods turn on and turn off all LCD segments.
+   */
+  static void TurnOnAllSegments(void);
+  static void TurnOffAllSegments(void);
 
   /****************
    * Private Data
