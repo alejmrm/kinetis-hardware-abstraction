@@ -18,6 +18,23 @@ PITDriver ctrlIntrptTmrDriver(PITDriver::TMR_1);
 void HandlePITInt(void)
 {
   ctrlIntrptTmrDriver.ClearIntrpt();
+
+  static bool lcdFlag = false;
+  static uint16 lcdCnt = 0;
+
+  ctrlIntrptTmrDriver.ClearIntrpt();
+
+  if (++lcdCnt >= 1000)  {
+    if (lcdFlag)  {
+      SLCDDriver::TurnOnAllSegments();
+      lcdFlag = false;
+    }
+    else  {
+      SLCDDriver::TurnOffAllSegments();
+      lcdFlag = true;
+    }
+    lcdCnt = 0;
+  }
 }
 
 /*****************************************************************************************************************************************************
@@ -42,24 +59,4 @@ int main(void)
   ctrlIntrptTmrDriver.EnableTmr();
 
   while (true) { }
-}
-
-void HandlePITInt(void)
-{
-  static bool lcdFlag = false;
-  static uint16 lcdCnt = 0;
-
-  ctrlIntrptTmrDriver.ClearIntrpt();
-
-  if (++lcdCnt >= 1000)  {
-    if (lcdFlag)  {
-      SLCDDriver::TurnOnAllSegments();
-      lcdFlag = false;
-    }
-    else  {
-      SLCDDriver::TurnOffAllSegments();
-      lcdFlag = true;
-    }
-    lcdCnt = 0;
-  }
 }
