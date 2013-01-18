@@ -42,14 +42,6 @@ SLCDDriver::~SLCDDriver(void)
 void SLCDDriver::InitModule(void)
 {
   MCG_C1 |= MCG_C1_IRCLKEN_MASK;
-  //enable clock gate for Ports
-  SIM_SCGC5 |=  ( !SIM_SCGC5_LPTIMER_MASK
-                | !SIM_SCGC5_REGFILE_MASK
-                | !SIM_SCGC5_TSI_MASK
-                | SIM_SCGC5_PORTB_MASK
-                | SIM_SCGC5_PORTC_MASK
-                | SIM_SCGC5_PORTD_MASK
-                );
   // Master General Purpose Control Register - Set mux to LCD analog operation.
   // After RESET these register are configured as 0 but indicated here for reference
   PORTB_PCR1  = PORT_PCR_MUX(0); //LCD_P1
@@ -99,9 +91,6 @@ void SLCDDriver::InitModule(void)
   PORTD_PCR5  = PORT_PCR_MUX(0); //LCD_P45
   PORTD_PCR6  = PORT_PCR_MUX(0); //LCD_P46
   PORTD_PCR7  = PORT_PCR_MUX(0); //LCD_P47
-
-  // SLCD clock gate on
-  SIM_SCGC3 |= SIM_SCGC3_SLCD_MASK;
 
   // Disable LCD
   LCD_GCR = 0;

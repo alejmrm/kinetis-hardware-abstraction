@@ -41,7 +41,13 @@ class SIMDriver : public PeriphDriver
    * This type defines the system clocks whose operations are gated by the SIM.
    */
   typedef enum  {
-    SYS_CLK_PIT = ((5 * 32) + 23)    // Periodic interrupt timer
+    SYS_CLK_SLCD  = (((3 - 1) * 32) + 30),
+    SYS_CLK_PORTA = (((5 - 1) * 32) + 9),
+    SYS_CLK_PORTB = (((5 - 1) * 32) + 10),
+    SYS_CLK_PORTC = (((5 - 1) * 32) + 11),
+    SYS_CLK_PORTD = (((5 - 1) * 32) + 12),
+    SYS_CLK_PORTE = (((5 - 1) * 32) + 13),
+    SYS_CLK_PIT   = (((6 - 1) * 32) + 23)
   } sys_clk;
 
   /******************

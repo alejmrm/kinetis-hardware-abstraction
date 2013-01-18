@@ -51,6 +51,11 @@ int main(void)
   VectorTable::SetIsr(VectorTable::INTRPT_PIT_1, HandlePITInt);
   NVICDriver::EnableIntrpt(NVICDriver::INTRPT_PIT_1);
 
+  SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_PORTB);
+  SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_PORTC);
+  SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_PORTD);
+  SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_SLCD);
+
   SLCDDriver::InitModule();
 
   PITDriver::EnableModule();
