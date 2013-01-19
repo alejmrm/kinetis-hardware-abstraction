@@ -6,6 +6,7 @@
 *
 *****************************************************************************************************************************************************/
 #include <freescale/MK40X256VMD100.h>
+#include "CommonTypes.h"
 #include "SLCDDriver.h"
 
 /*****************************************************************************************************************************************************
@@ -138,6 +139,28 @@ void SLCDDriver::InitModule(void)
               );
   // Enable LCD module
   LCD_GCR |= LCD_GCR_LCDEN_MASK;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method enables the specified LCD pin.
+ */
+void SLCDDriver::EnablePin(SLCDDriver::pin_id pin)
+{
+  /*
+   * Set the bit in the LCD pin enable register corresponding to the specified pin.
+   */
+  moduleReg->PEN[(uint8)pin >> 5] |= ((uint32)1 << ((uint8)pin & 0x1F));
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method disables the specified LCD pin.
+ */
+void SLCDDriver::DisablePin(SLCDDriver::pin_id pin)
+{
+  /*
+   * Clear the bit in the LCD pin enable register corresponding to the specified pin.
+   */
+  moduleReg->PEN[(uint8)pin >> 5] &= ~((uint32)1 << ((uint8)pin & 0x1F));
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
