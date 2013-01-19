@@ -27,11 +27,8 @@ GPIO_MemMapPtr GPIODriver::moduleReg[GPIODriver::NUM_PORTS] = {PTA_BASE_PTR, PTB
 /*
  * This method is the constructor for the GPIO driver class.
  */
-GPIODriver::GPIODriver(GPIODriver::pin_id pin)
+GPIODriver::GPIODriver(void)
 {
-  port = (GPIODriver::port_id)((uint8)pin / GPIODriver::NUM_PORT_PINS);
-  portPin = (GPIODriver::port_pin)((uint8)pin % GPIODriver::NUM_PORT_PINS);
-  portReg = moduleReg[(uint8)port];
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -42,43 +39,43 @@ GPIODriver::~GPIODriver(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method sets the direction of the pin managed by the class instance.
+ * This method sets the direction of the specified pin.
  */
-void GPIODriver::SetDir(GPIODriver::pin_dir dir)
+void GPIODriver::SetDir(GPIODriver::pin_id pin, GPIODriver::pin_dir dir)
 {
   /*
    * Clear or set the bit in the port data direction register corresponding to the pin, depending on the specified direction.
    */
   if (dir == GPIODriver::PIN_DIR_IN)
-    portReg->PDDR &= ~((uint32)1 << (uint8)portPin);
+    moduleReg[(uint8)pin >> 5]->PDDR &= ~((uint32)1 << ((uint8)pin & 0x1F));
   else if (dir == GPIODriver::PIN_DIR_OUT)
-    portReg->PDDR |= ((uint32)1 << (uint8)portPin);
+    moduleReg[(uint8)pin >> 5]->PDDR |= ((uint32)1 << ((uint8)pin & 0x1F));
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method sets the level of the pin managed by the class instance.
+ * This method sets the level of the specified pin.
  */
-void GPIODriver::SetLvl(GPIODriver::pin_lvl lvl)
+void GPIODriver::SetLvl(GPIODriver::pin_id pin, GPIODriver::pin_lvl lvl)
 {
   /*
    * Set the bit corresponding to the pin in either the port clear output register or the port set output register, depending on the specified level.
    */
   if (lvl == GPIODriver::PIN_LVL_LO)
-    portReg->PCOR = ((uint32)1 << (uint8)portPin);
+    moduleReg[(uint8)pin >> 5]->PCOR = ((uint32)1 << ((uint8)pin & 0x1F));
   else if (lvl == GPIODriver::PIN_LVL_HI)
-    portReg->PSOR = ((uint32)1 << (uint8)portPin);
+    moduleReg[(uint8)pin >> 5]->PSOR = ((uint32)1 << ((uint8)pin & 0x1F));
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method provides the level of the pin managed by the class instance.
+ * This method provides the level of the specified pin.
  */
-GPIODriver::pin_lvl GPIODriver::GetLvl(void)
+GPIODriver::pin_lvl GPIODriver::GetLvl(GPIODriver::pin_id pin)
 {
   /*
    * Check the value of the port data input register bit corresponding to the pin. If the bit value is zero, the pin level is low. If the bit value
    * is one, the pin level is high.
    */
-  if (portReg->PDIR & ((uint32)1 << (uint8)portPin) == 0)
+  if (moduleReg[(uint8)pin >> 5]->PDIR & ((uint32)1 << ((uint8)pin & 0x1F)) == 0)
     return GPIODriver::PIN_LVL_LO;
   else
     return GPIODriver::PIN_LVL_HI;

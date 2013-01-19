@@ -21,12 +21,21 @@
  */
 class GPIODriver : public PeriphDriver
 {
+  /*********************
+   * Private Constants
+   ********************/
+  private:
+  /*
+   * This constant defines the number of GPIO ports.
+   */
+  enum {NUM_PORTS = 5};
+
   /****************
    * Public Types
    ***************/
   public:
   /*
-   * This type defines the superset of available GPIO pins. In general, for a specific MCU, only some of the pins are available.
+   * This type defines the available GPIO pins.
    */
   typedef enum  {
     /*
@@ -78,29 +87,6 @@ class GPIODriver : public PeriphDriver
     PIN_LVL_LO = 0, PIN_LVL_HI
   } pin_lvl;
 
-  /*****************
-   * Private Types
-   ****************/
-  private:
-  /*
-   * This type defines the superset of available GPIO ports. In general, for a specific MCU, only some of the ports are available.
-   */
-  typedef enum  {
-    PORT_A = 0, PORT_B, PORT_C, PORT_D, PORT_E,
-    NUM_PORTS
-  } port_id;
-  /*
-   * This type defines the superset of pins that are available on each GPIO port. In general, for a specific MCU and port, only some of the pins are
-   * available.
-   */
-  typedef enum  {
-    PORT_PIN_0 = 0, PORT_PIN_1,  PORT_PIN_2,  PORT_PIN_3,  PORT_PIN_4,  PORT_PIN_5,  PORT_PIN_6,  PORT_PIN_7,
-    PORT_PIN_8,     PORT_PIN_9,  PORT_PIN_10, PORT_PIN_11, PORT_PIN_12, PORT_PIN_13, PORT_PIN_14, PORT_PIN_15,
-    PORT_PIN_16,    PORT_PIN_17, PORT_PIN_18, PORT_PIN_19, PORT_PIN_20, PORT_PIN_21, PORT_PIN_22, PORT_PIN_23,
-    PORT_PIN_24,    PORT_PIN_25, PORT_PIN_26, PORT_PIN_27, PORT_PIN_28, PORT_PIN_29, PORT_PIN_30, PORT_PIN_31,
-    NUM_PORT_PINS
-  } port_pin;
-
   /******************
    * Public Methods
    *****************/
@@ -108,41 +94,29 @@ class GPIODriver : public PeriphDriver
   /*
    * These methods are the constructor and destructor for the GPIO driver class.
    */
-  GPIODriver(GPIODriver::pin_id pin);
+  GPIODriver(void);
   ~GPIODriver(void);
   /*
-   * This method sets the direction of the pin managed by the class instance.
+   * This static method sets the direction of the specified pin.
    */
-  void SetDir(GPIODriver::pin_dir dir);
+  static void SetDir(pin_id pin, pin_dir dir);
   /*
-   * This method sets the level of the pin managed by the class instance.
+   * This static method sets the level of the specified pin.
    */
-  void SetLvl(GPIODriver::pin_lvl lvl);
+  static void SetLvl(pin_id pin, pin_lvl lvl);
   /*
-   * This method provides the level of the pin managed by the class instance.
+   * This static method provides the level of the specified pin.
    */
-  GPIODriver::pin_lvl GetLvl(void);
+  static pin_lvl GetLvl(pin_id pin);
 
   /****************
    * Private Data
    ***************/
   private:
   /*
-   * This data member is the GPIO port corresponding to the pin managed by the class instance.
-   */
-  GPIODriver::port_id port;
-  /*
-   * This data member is the GPIO port pin corresponding to the pin managed by the class instance.
-   */
-  GPIODriver::port_pin portPin;
-  /*
    * This static data member is an array containing pointers to the MCU register structures for each of the GPIO ports.
    */
-  static GPIO_MemMapPtr moduleReg[GPIODriver::NUM_PORTS];
-  /*
-   * This data member is a pointer to the GPIO port register structure for the port managed by the class instance.
-   */
-  GPIO_MemMapPtr portReg;
+  static GPIO_MemMapPtr moduleReg[NUM_PORTS];
 };
 
 #endif
