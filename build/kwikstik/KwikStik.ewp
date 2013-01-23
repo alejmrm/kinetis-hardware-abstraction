@@ -1856,6 +1856,9 @@
     </group>
     <group>
       <name>KwikStik</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\kwikstik\KwikStikDisplay.h</name>
+      </file>
     </group>
   </group>
   <group>
@@ -1895,6 +1898,9 @@
     </group>
     <group>
       <name>KwikStik</name>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\kwikstik\KwikStikDisplay.c</name>
+      </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\kwikstik\Main.c</name>
       </file>
