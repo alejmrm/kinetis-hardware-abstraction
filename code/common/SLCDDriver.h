@@ -53,11 +53,6 @@ class SLCDDriver : public PeriphDriver
    */
   static void EnablePin(pin_id pin);
   static void DisablePin(pin_id pin);
-  /*
-   * These static methods turn on and turn off all LCD segments.
-   */
-  static void TurnOnAllSegments(void);
-  static void TurnOffAllSegments(void);
 
   /****************
    * Private Data

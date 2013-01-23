@@ -31,6 +31,11 @@ class KwikStikDisplay
    * This static method initializes the KwikStik display.
    */
   static void Init(void);
+  /*
+   * These static methods turn on and turn off all LCD segments.
+   */
+  static void TurnOnAllSegments(void);
+  static void TurnOffAllSegments(void);
 };
 
 #endif

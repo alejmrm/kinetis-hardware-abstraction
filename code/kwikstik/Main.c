@@ -6,6 +6,7 @@
 *
 *****************************************************************************************************************************************************/
 #include "CommonTypes.h"
+#include "KwikStikDisplay.h"
 #include "NVICDriver.h"
 #include "PITDriver.h"
 #include "SCBDriver.h"
@@ -19,21 +20,21 @@ void HandlePITInt(void)
 {
   ctrlIntrptTmrDriver.ClearIntrpt();
 
-  static bool lcdFlag = false;
-  static uint16 lcdCnt = 0;
+  static bool displayFlag = false;
+  static uint16 displayCnt = 0;
 
   ctrlIntrptTmrDriver.ClearIntrpt();
 
-  if (++lcdCnt >= 1000)  {
-    if (lcdFlag)  {
-      SLCDDriver::TurnOnAllSegments();
-      lcdFlag = false;
+  if (++displayCnt >= 1000)  {
+    if (displayFlag)  {
+      KwikStikDisplay::TurnOnAllSegments();
+      displayFlag = false;
     }
     else  {
-      SLCDDriver::TurnOffAllSegments();
-      lcdFlag = true;
+      KwikStikDisplay::TurnOffAllSegments();
+      displayFlag = true;
     }
-    lcdCnt = 0;
+    displayCnt = 0;
   }
 }
 
@@ -57,6 +58,8 @@ int main(void)
   SIMDriver::EnableSysClkGating(SIMDriver::SYS_CLK_SLCD);
 
   SLCDDriver::InitModule();
+
+  KwikStikDisplay::Init();
 
   PITDriver::EnableModule();
   ctrlIntrptTmrDriver.SetPeriod(10000);
