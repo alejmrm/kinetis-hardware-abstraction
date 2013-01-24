@@ -45,6 +45,28 @@ void SLCDDriver::InitModule(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
+ * This static method enables the LCD controller waveform generator.
+ */
+void SLCDDriver::EnableCtrl(void)
+{
+  /*
+   * Set the LCD driver enable pin in the LCD general control register.
+   */
+  moduleReg->GCR |= ((uint32)1 << 7);
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method disables the LCD controller waveform generator.
+ */
+void SLCDDriver::DisableCtrl(void)
+{
+  /*
+   * Clear the LCD driver enable pin in the LCD general control register.
+   */
+  moduleReg->GCR &= ~((uint32)1 << 7);
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
  * This static method enables the specified LCD pin.
  */
 void SLCDDriver::EnablePin(SLCDDriver::pin_id pin)

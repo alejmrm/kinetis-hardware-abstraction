@@ -84,9 +84,10 @@ void KwikStikDisplay::Init(void)
   PORTD_PCR5  = PORT_PCR_MUX(0); //LCD_P45
   PORTD_PCR6  = PORT_PCR_MUX(0); //LCD_P46
   PORTD_PCR7  = PORT_PCR_MUX(0); //LCD_P47
-
-  // Disable LCD
-  LCD_GCR = 0;
+  /*
+   * Disable the LCD controller waveform generator.
+   */
+  SLCDDriver::DisableCtrl();
 
   // Enable LCD pins 1-47
   LCD_PENH = 0;
@@ -129,8 +130,10 @@ void KwikStikDisplay::Init(void)
               | LCD_GCR_LCLK(0) //0-3
               | LCD_GCR_DUTY(7) //0-7
               );
-  // Enable LCD module
-  LCD_GCR |= LCD_GCR_LCDEN_MASK;
+  /*
+   * Enable the LCD controller waveform generator.
+   */
+  SLCDDriver::EnableCtrl();
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*

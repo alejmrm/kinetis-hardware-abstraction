@@ -49,6 +49,11 @@ class SLCDDriver : public PeriphDriver
    */
   static void InitModule(void);
   /*
+   * These static methods enable and disable the LCD controller waveform generator.
+   */
+  static void EnableCtrl(void);
+  static void DisableCtrl(void);
+  /*
    * These static methods enable and disable the specified LCD pin.
    */
   static void EnablePin(pin_id pin);
