@@ -27,11 +27,8 @@ PORT_MemMapPtr PORTDriver::moduleReg[PORTDriver::NUM_PORTS] = {PORTA_BASE_PTR, P
 /*
  * This method is the constructor for the PORT driver class.
  */
-PORTDriver::PORTDriver(PORTDriver::pin_id pin)
+PORTDriver::PORTDriver(void)
 {
-  port = (PORTDriver::port_id)((uint8)pin / PORTDriver::NUM_PORT_PINS);
-  portPin = (PORTDriver::port_pin)((uint8)pin % PORTDriver::NUM_PORT_PINS);
-  portReg = moduleReg[(uint8)port];
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -42,36 +39,36 @@ PORTDriver::~PORTDriver(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method clears the interrupt status for the pin managed by the class instance.
+ * This static method clears the interrupt status for the specified pin.
  */
-void PORTDriver::ClearIntStatus(void)
+void PORTDriver::ClearIntStatus(PORTDriver::pin_id pin)
 {
   /*
    * Write to the interrupt status flag bit in the pin control register corresponding to the pin to clear the interrupt status.
    */
-  portReg->PCR[(uint8)portPin] |= ((uint32)1 << PORT_PCR_ISF_SHIFT);
+  moduleReg[(uint8)pin >> 5]->PCR[(uint8)pin & 0x1F] |= ((uint32)1 << PORT_PCR_ISF_SHIFT);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method configures the multiplexing mode for the pin managed by the class instance.
+ * This static method configures the multiplexing mode for the specified pin.
  */
-void PORTDriver::SetMuxMode(PORTDriver::pin_mux_mode mode)
+void PORTDriver::SetMuxMode(PORTDriver::pin_id pin, PORTDriver::pin_mux_mode mode)
 {
   /*
-   * Set the mux control bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.
+   * Set the mux control bits in the pin control register corresponding to the pin to the value corresponding to the mode.
    */
-  portReg->PCR[(uint8)portPin] &= ~(PORT_PCR_MUX_MASK);
-  portReg->PCR[(uint8)portPin] |= ((uint32)mode << PORT_PCR_MUX_SHIFT);
+  moduleReg[(uint8)pin >> 5]->PCR[(uint8)pin & 0x1F] &= ~(PORT_PCR_MUX_MASK);
+  moduleReg[(uint8)pin >> 5]->PCR[(uint8)pin & 0x1F] |= ((uint32)mode << PORT_PCR_MUX_SHIFT);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method configures the interrupt and DMA mode for the pin managed by the class instance.
+ * This static method configures the interrupt and DMA mode for the specified pin.
  */
-void PORTDriver::SetIntDmaMode(PORTDriver::pin_int_dma_mode mode)
+void PORTDriver::SetIntDmaMode(PORTDriver::pin_id pin, PORTDriver::pin_int_dma_mode mode)
 {
   /*
-   * Set the interrupt configuration bits in the pin control register corresponding to the pin to the value corresponding to the specified mode.
+   * Set the interrupt configuration bits in the pin control register corresponding to the pin to the value corresponding to the mode.
    */
-  portReg->PCR[(uint8)portPin] &= ~(PORT_PCR_IRQC_MASK);
-  portReg->PCR[(uint8)portPin] |= ((uint32)mode << PORT_PCR_IRQC_SHIFT);
+  moduleReg[(uint8)pin >> 5]->PCR[(uint8)pin & 0x1F] &= ~(PORT_PCR_IRQC_MASK);
+  moduleReg[(uint8)pin >> 5]->PCR[(uint8)pin & 0x1F] |= ((uint32)mode << PORT_PCR_IRQC_SHIFT);
 }

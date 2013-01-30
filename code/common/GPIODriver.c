@@ -39,7 +39,7 @@ GPIODriver::~GPIODriver(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method sets the direction of the specified pin.
+ * This static method sets the direction of the specified pin.
  */
 void GPIODriver::SetDir(GPIODriver::pin_id pin, GPIODriver::pin_dir dir)
 {
@@ -53,7 +53,7 @@ void GPIODriver::SetDir(GPIODriver::pin_id pin, GPIODriver::pin_dir dir)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method sets the level of the specified pin.
+ * This static method sets the level of the specified pin.
  */
 void GPIODriver::SetLvl(GPIODriver::pin_id pin, GPIODriver::pin_lvl lvl)
 {
@@ -67,7 +67,7 @@ void GPIODriver::SetLvl(GPIODriver::pin_id pin, GPIODriver::pin_lvl lvl)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method provides the level of the specified pin.
+ * This static method provides the level of the specified pin.
  */
 GPIODriver::pin_lvl GPIODriver::GetLvl(GPIODriver::pin_id pin)
 {
