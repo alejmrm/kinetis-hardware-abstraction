@@ -88,16 +88,107 @@ void KwikStikDisplay::Init(void)
    * Disable the LCD controller waveform generator.
    */
   SLCDDriver::DisableCtrl();
+  /*
+   * Enable the LCD pins used in the KwikStik display.
+   */
+  SLCDDriver::EnablePin(SLCDDriver::PIN_1);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_2);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_3);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_4);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_5);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_6);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_7);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_8);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_9);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_10);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_11);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_12);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_13);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_14);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_15);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_16);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_17);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_18);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_19);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_20);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_21);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_22);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_23);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_24);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_25);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_26);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_27);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_28);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_29);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_30);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_31);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_32);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_33);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_34);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_35);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_36);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_37);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_38);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_39);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_40);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_41);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_42);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_43);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_44);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_45);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_46);
+  SLCDDriver::EnablePin(SLCDDriver::PIN_47);
+  /*
+   * Enable the front plane segments and back plane phases used in the KwikStik display.
+   */
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_1, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_2, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_3, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_4, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_5, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_6, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_7, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_8, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_9, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_10, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_11, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_12, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_13, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_14, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_15, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_16, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_17, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_18, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_19, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_20, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_21, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_22, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_23, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_24, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_25, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_26, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_27, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_28, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_29, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_30, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_31, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_32, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_33, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_34, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_35, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_36, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_37, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_38, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_39, SLCDDriver::PIN_OPERATION_FRONTPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_40, SLCDDriver::PIN_OPERATION_BACKPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_41, SLCDDriver::PIN_OPERATION_BACKPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_42, SLCDDriver::PIN_OPERATION_BACKPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_43, SLCDDriver::PIN_OPERATION_BACKPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_44, SLCDDriver::PIN_OPERATION_BACKPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_45, SLCDDriver::PIN_OPERATION_BACKPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_46, SLCDDriver::PIN_OPERATION_BACKPLANE);
+  SLCDDriver::SetPinOperation(SLCDDriver::PIN_47, SLCDDriver::PIN_OPERATION_BACKPLANE);
 
-  // Enable LCD pins 1-47
-  LCD_PENH = 0;
-  LCD_PENH = 0x0000FFFF;
-  LCD_PENL = 0;
-  LCD_PENL = 0xFFFFFFFE;
-  // Enable LCD pins used as Backplanes 0-7
-  LCD_BPENH = 0;
-  LCD_BPENH = 0x0000FF00;
-  LCD_BPENL = 0;
   // Configure backplane phase
   LCD_WF43TO40 = 0x08040201;
   LCD_WF47TO44 = 0x80402010;

@@ -87,3 +87,14 @@ void SLCDDriver::DisablePin(SLCDDriver::pin_id pin)
    */
   moduleReg->PEN[(uint8)pin >> 5] &= ~((uint32)1 << ((uint8)pin & 0x1F));
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method sets the operation of the specified pin.
+ */
+void SLCDDriver::SetPinOperation(SLCDDriver::pin_id pin, SLCDDriver::pin_operation operation)
+{
+  if (operation == SLCDDriver::PIN_OPERATION_FRONTPLANE)
+    moduleReg->BPEN[(uint8)pin >> 5] &= ~((uint32)1 << ((uint8)pin & 0x1F));
+  else if (operation == SLCDDriver::PIN_OPERATION_BACKPLANE)
+    moduleReg->BPEN[(uint8)pin >> 5] |= ((uint32)1 << ((uint8)pin & 0x1F));
+}
