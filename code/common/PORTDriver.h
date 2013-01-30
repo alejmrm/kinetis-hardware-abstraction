@@ -21,12 +21,21 @@
  */
 class PORTDriver : public PeriphDriver
 {
+  /*********************
+   * Private Constants
+   ********************/
+  private:
+  /*
+   * This constant defines the number of ports.
+   */
+  enum {NUM_PORTS = 5};
+
   /****************
    * Public Types
    ***************/
   public:
   /*
-   * This type defines the superset of available port pins. In general, for a specific MCU, only some of the pins are available.
+   * This type defines the available port pins.
    */
   typedef enum  {
     /*
@@ -93,29 +102,6 @@ class PORTDriver : public PeriphDriver
     PIN_INT_DMA_MODE_INT_LVL_HI       = 12
   } pin_int_dma_mode;
 
-  /*****************
-   * Private Types
-   ****************/
-  private:
-  /*
-   * This type defines the superset of available ports. In general, for a specific MCU, only some of the ports are available.
-   */
-  typedef enum  {
-    PORT_A = 0, PORT_B, PORT_C, PORT_D, PORT_E,
-    NUM_PORTS
-  } port_id;
-  /*
-   * This type defines the superset of pins that are available on each port. In general, for a specific MCU and port, only some of the pins are
-   * available.
-   */
-  typedef enum  {
-    PORT_PIN_0 = 0, PORT_PIN_1,  PORT_PIN_2,  PORT_PIN_3,  PORT_PIN_4,  PORT_PIN_5,  PORT_PIN_6,  PORT_PIN_7,
-    PORT_PIN_8,     PORT_PIN_9,  PORT_PIN_10, PORT_PIN_11, PORT_PIN_12, PORT_PIN_13, PORT_PIN_14, PORT_PIN_15,
-    PORT_PIN_16,    PORT_PIN_17, PORT_PIN_18, PORT_PIN_19, PORT_PIN_20, PORT_PIN_21, PORT_PIN_22, PORT_PIN_23,
-    PORT_PIN_24,    PORT_PIN_25, PORT_PIN_26, PORT_PIN_27, PORT_PIN_28, PORT_PIN_29, PORT_PIN_30, PORT_PIN_31,
-    NUM_PORT_PINS
-  } port_pin;
-
   /******************
    * Public Methods
    *****************/
@@ -123,41 +109,29 @@ class PORTDriver : public PeriphDriver
   /*
    * These methods are the constructor and destructor for the PORT driver class.
    */
-  PORTDriver(PORTDriver::pin_id pin);
+  PORTDriver(void);
   ~PORTDriver(void);
   /*
-   * This method clears the interrupt status for the pin managed by the class instance.
+   * This static method clears the interrupt status for the specified pin.
    */
-  void ClearIntStatus(void);
+  static void ClearIntStatus(pin_id pin);
   /*
-   * This method configures the multiplexing mode for the pin managed by the class instance.
+   * This static method configures the multiplexing mode for the specified pin.
    */
-  void SetMuxMode(PORTDriver::pin_mux_mode mode);
+  static void SetMuxMode(pin_id pin, pin_mux_mode mode);
   /*
-   * This method configures the interrupt and DMA mode for the pin managed by the class instance.
+   * This static method configures the interrupt and DMA mode for the specified pin.
    */
-  void SetIntDmaMode(PORTDriver::pin_int_dma_mode mode);
+  static void SetIntDmaMode(pin_id pin, pin_int_dma_mode mode);
 
   /****************
    * Private Data
    ***************/
   private:
   /*
-   * This data member is the port corresponding to the pin managed by the class instance.
-   */
-  PORTDriver::port_id port;
-  /*
-   * This data member is the port pin corresponding to the pin managed by the class instance.
-   */
-  PORTDriver::port_pin portPin;
-  /*
    * This static data member is an array containing pointers to the PORT register structures for each of the ports.
    */
-  static PORT_MemMapPtr moduleReg[PORTDriver::NUM_PORTS];
-  /*
-   * This data member is a pointer to the PORT register structure for the port managed by the class instance.
-   */
-  PORT_MemMapPtr portReg;
+  static PORT_MemMapPtr moduleReg[NUM_PORTS];
 };
 
 #endif
