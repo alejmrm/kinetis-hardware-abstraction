@@ -1827,6 +1827,9 @@
         <name>$PROJ_DIR$\..\..\code\common\CoreDriver.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\code\common\EWMDriver.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.h</name>
       </file>
       <file>
@@ -1861,6 +1864,9 @@
       <name>Common</name>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\CoreDriver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\code\common\EWMDriver.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\code\common\GPIODriver.c</name>
