@@ -29,6 +29,10 @@ class EWMDriver : public PeriphDriver
    */
   EWMDriver(void);
   ~EWMDriver(void);
+  /*
+   * This static method enables the EWM module.
+   */
+  static void EnableModule(void);
 
   /****************
    * Private Data

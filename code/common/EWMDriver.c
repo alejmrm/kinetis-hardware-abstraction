@@ -37,3 +37,14 @@ EWMDriver::EWMDriver(void)
 EWMDriver::~EWMDriver(void)
 {
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method enables the EWM module.
+ */
+void EWMDriver::EnableModule(void)
+{
+  /*
+   * Set the module enable bit in the EWM control register.
+   */
+  moduleReg->CTRL |= EWM_CTRL_EWMEN_MASK;
+}
