@@ -33,6 +33,16 @@ class EWMDriver : public PeriphDriver
    * This static method enables the EWM module.
    */
   static void EnableModule(void);
+  /*
+   * These static methods enable and disable the EWM input port.
+   */
+  void EnableInput(void);
+  void DisableInput(void);
+  /*
+   * These static methods enable and disable the EWM interrupt.
+   */
+  void EnableIntrpt(void);
+  void DisableIntrpt(void);
 
   /****************
    * Private Data

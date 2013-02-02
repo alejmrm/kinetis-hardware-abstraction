@@ -48,3 +48,47 @@ void EWMDriver::EnableModule(void)
    */
   moduleReg->CTRL |= EWM_CTRL_EWMEN_MASK;
 }
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method enables the EWM input port.
+ */
+void EWMDriver::EnableInput(void)
+{
+  /*
+   * Set the input enable bit in the EWM control register.
+   */
+  moduleReg->CTRL |= EWM_CTRL_INEN_MASK;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method disables the EWM input port.
+ */
+void EWMDriver::DisableInput(void)
+{
+  /*
+   * Clear the input enable bit in the EWM control register.
+   */
+  moduleReg->CTRL &= ~EWM_CTRL_INEN_MASK;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method enables the EWM interrupt.
+ */
+void EWMDriver::EnableIntrpt(void)
+{
+  /*
+   * Set the interrupt enable bit in the EWM control register.
+   */
+  moduleReg->CTRL |= ((uint8)1 << 3);
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method disables the EWM interrupt.
+ */
+void EWMDriver::DisableIntrpt(void)
+{
+  /*
+   * Clear the interrupt enable bit in the EWM control register.
+   */
+  moduleReg->CTRL &= ~((uint8)1 << 3);
+}
