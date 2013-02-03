@@ -44,9 +44,23 @@ EWMDriver::~EWMDriver(void)
 void EWMDriver::EnableModule(void)
 {
   /*
-   * Set the module enable bit in the EWM control register.
+   * Set the EWM control register module enable bit.
    */
-  moduleReg->CTRL |= EWM_CTRL_EWMEN_MASK;
+  moduleReg->CTRL |= ((uint8)1 << 0);
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method sets the assert state of the EWM input signal.
+ */
+void EWMDriver::SetAssertState(EWMDriver::assert_state state)
+{
+  /*
+   * Set the EWM control register assertion state select bit to the value corresponding to the state.
+   */
+  if (state == EWMDriver::ASSERT_STATE_ZERO)
+    moduleReg->CTRL &= ~((uint8)1 << 1);
+  else if (state == EWMDriver::ASSERT_STATE_ONE)
+    moduleReg->CTRL |= ((uint8)1 << 1);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -55,9 +69,9 @@ void EWMDriver::EnableModule(void)
 void EWMDriver::EnableInput(void)
 {
   /*
-   * Set the input enable bit in the EWM control register.
+   * Set the EWM control register input enable bit.
    */
-  moduleReg->CTRL |= EWM_CTRL_INEN_MASK;
+  moduleReg->CTRL |= ((uint8)1 << 2);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -66,9 +80,9 @@ void EWMDriver::EnableInput(void)
 void EWMDriver::DisableInput(void)
 {
   /*
-   * Clear the input enable bit in the EWM control register.
+   * Clear the EWM control register input enable bit.
    */
-  moduleReg->CTRL &= ~EWM_CTRL_INEN_MASK;
+  moduleReg->CTRL &= ~((uint8)1 << 2);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -77,7 +91,7 @@ void EWMDriver::DisableInput(void)
 void EWMDriver::EnableIntrpt(void)
 {
   /*
-   * Set the interrupt enable bit in the EWM control register.
+   * Set the EWM control register interrupt enable bit.
    */
   moduleReg->CTRL |= ((uint8)1 << 3);
 }
@@ -88,7 +102,19 @@ void EWMDriver::EnableIntrpt(void)
 void EWMDriver::DisableIntrpt(void)
 {
   /*
-   * Clear the interrupt enable bit in the EWM control register.
+   * Clear the EWM control register interrupt enable bit.
    */
   moduleReg->CTRL &= ~((uint8)1 << 3);
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method method services the external watchdog.
+ */
+void EWMDriver::ServiceWatchdog(void)
+{
+  /*
+   * Write the required sequence of bytes to the EWM service register.
+   */
+  moduleReg->SERV = 0xB4;
+  moduleReg->SERV = 0x2C;
 }

@@ -20,6 +20,18 @@
  */
 class EWMDriver : public PeriphDriver
 {
+  /****************
+   * Public Types
+   ***************/
+  public:
+  /*
+   * This type defines the supported assert states of the EWM input signal.
+   */
+  typedef enum  {
+    ASSERT_STATE_ZERO = 0,
+    ASSERT_STATE_ONE
+  } assert_state;
+
   /******************
    * Public Methods
    *****************/
@@ -34,15 +46,23 @@ class EWMDriver : public PeriphDriver
    */
   static void EnableModule(void);
   /*
+   * This static method sets the assert state of the EWM input signal.
+   */
+  static void SetAssertState(assert_state state);
+  /*
    * These static methods enable and disable the EWM input port.
    */
-  void EnableInput(void);
-  void DisableInput(void);
+  static void EnableInput(void);
+  static void DisableInput(void);
   /*
    * These static methods enable and disable the EWM interrupt.
    */
-  void EnableIntrpt(void);
-  void DisableIntrpt(void);
+  static void EnableIntrpt(void);
+  static void DisableIntrpt(void);
+  /*
+   * This static method method services the external watchdog.
+   */
+  static void ServiceWatchdog(void);
 
   /****************
    * Private Data
