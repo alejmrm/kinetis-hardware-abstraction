@@ -5,7 +5,7 @@
 *  This file contains the periodic interrupt timer driver class implementation.
 *
 *****************************************************************************************************************************************************/
-#include <freescale/MK40X256VMD100.h>
+#include "MK40DZ10.h"
 #include "CommonTypes.h"
 #include "PITDriver.h"
 
