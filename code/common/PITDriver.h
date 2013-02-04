@@ -41,38 +41,38 @@ class PITDriver : public PeriphDriver
   /*
    * These methods are the constructor and destructor for the PIT driver class.
    */
-  PITDriver(tmr_id tmr);
+  PITDriver(void);
   ~PITDriver(void);
   /*
    * This static method enables the PIT module.
    */
   static void EnableModule(void);
   /*
-   * This method sets the timeout period for the timer managed by the class instance.
+   * This static method sets the timeout period for the specified timer.
    */
-  void SetPeriod(uint32 period);
+  static void SetPeriod(tmr_id tmr, uint32 period);
   /*
-   * This method provides the present count value for the timer managed by the class instance.
+   * This static method provides the present count value for the specified timer.
    */
-  uint32 GetCnt(void);
+  static uint32 GetCnt(tmr_id tmr);
   /*
-   * These methods enable and disable the timer managed by the class instance.
+   * These static methods enable and disable the specified timer.
    */
-  void EnableTmr(void);
-  void DisableTmr(void);
+  static void EnableTmr(tmr_id tmr);
+  static void DisableTmr(tmr_id tmr);
   /*
-   * These methods enable and disable the interrupt corresponding to the timer managed by the class instance.
+   * These static methods enable and disable the interrupt corresponding to the specified timer.
    */
-  void EnableIntrpt(void);
-  void DisableIntrpt(void);
+  static void EnableIntrpt(tmr_id tmr);
+  static void DisableIntrpt(tmr_id tmr);
   /*
-   * This method indicates whether the interrupt corresponding to the timer managed by the class instance is pending.
+   * This static method indicates whether the interrupt corresponding to the specified timer is pending.
    */
-  bool IntrptIsPending(void);
+  static bool IntrptIsPending(tmr_id tmr);
   /*
-   * This method clears the interrupt corresponding to the timer managed by the class instance.
+   * This static method clears the interrupt corresponding to the specified timer.
    */
-  void ClearIntrpt(void);
+  static void ClearIntrpt(tmr_id tmr);
 
   /****************
    * Private Data
@@ -82,10 +82,6 @@ class PITDriver : public PeriphDriver
    * This static data member is a pointer to the PIT register structure, which encompasses all of the individual timers.
    */
   static PIT_MemMapPtr moduleReg;
-  /*
-   * This data member is the timer managed by this class instance.
-   */
-  tmr_id tmr;
 };
 
 #endif
