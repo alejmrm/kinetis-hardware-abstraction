@@ -8,7 +8,7 @@
 #ifndef PORT_DRIVER_H
 #define PORT_DRIVER_H
 
-#include <freescale/MK40X256VMD100.h>
+#include "MK40DZ10.h"
 #include "PeriphDriver.h"
 
 /*****************************************************************************************************************************************************
