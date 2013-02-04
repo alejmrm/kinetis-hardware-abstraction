@@ -108,6 +108,41 @@ void EWMDriver::DisableIntrpt(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
+ * This static method sets the EWM clock prescaler value.
+ */
+void EWMDriver::SetClkPrescaler(uint8 val)
+{
+  /*
+   * Set the EWM clock prescaler register to the specified value.
+   */
+  *(uint8*)(0x40061005u) = val;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method sets the low EWM compare value, which defines the low end of the range of timer counts within which the external watchdog must
+ * be serviced.
+ */
+void EWMDriver::SetLoCompVal(uint8 val)
+{
+  /*
+   * Set the EWM compare low register to the specified value.
+   */
+  moduleReg->CMPL = val;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
+ * This static method sets the high EWM compare value, which defines the high end of the range of timer counts within which the external watchdog must
+ * be serviced.
+ */
+void EWMDriver::SetHiCompVal(uint8 val)
+{
+  /*
+   * Set the EWM compare high register to the specified value.
+   */
+  moduleReg->CMPH = val;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/*
  * This static method method services the external watchdog.
  */
 void EWMDriver::ServiceWatchdog(void)

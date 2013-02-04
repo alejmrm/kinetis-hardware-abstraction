@@ -60,6 +60,16 @@ class EWMDriver : public PeriphDriver
   static void EnableIntrpt(void);
   static void DisableIntrpt(void);
   /*
+   * This static method sets the EWM clock prescaler value.
+   */
+  static void SetClkPrescaler(uint8 val);
+  /*
+   * These static methods set the low and high EWM compare values, which define the range of timer counts within which the external watchdog must be
+   * serviced.
+   */
+  static void SetLoCompVal(uint8 val);
+  static void SetHiCompVal(uint8 val);
+  /*
    * This static method method services the external watchdog.
    */
   static void ServiceWatchdog(void);
