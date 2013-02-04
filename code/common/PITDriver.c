@@ -27,9 +27,8 @@ PIT_MemMapPtr PITDriver::moduleReg = PIT_BASE_PTR;
 /*
  * This method is the constructor for the PIT driver class.
  */
-PITDriver::PITDriver(PITDriver::tmr_id tmr)
+PITDriver::PITDriver(void)
 {
-  this->tmr = tmr;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -51,9 +50,9 @@ void PITDriver::EnableModule(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method sets the timeout period for the timer managed by the class instance.
+ * This static method sets the timeout period for the specified timer.
  */
-void PITDriver::SetPeriod(uint32 period)
+void PITDriver::SetPeriod(tmr_id tmr, uint32 period)
 {
   /*
    * Set the load value register for the timer to the specified period value.
@@ -62,9 +61,9 @@ void PITDriver::SetPeriod(uint32 period)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method provides the present count value for the timer managed by the class instance.
+ * This static method provides the present count value for the specified timer.
  */
-uint32 PITDriver::GetCnt(void)
+uint32 PITDriver::GetCnt(tmr_id tmr)
 {
   /*
    * Return the contents of the current timer value register for the timer.
@@ -73,49 +72,49 @@ uint32 PITDriver::GetCnt(void)
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method enables the timer managed by the class instance.
+ * This static method enables the specified timer.
  */
-void PITDriver::EnableTmr(void)
+void PITDriver::EnableTmr(tmr_id tmr)
 {
   moduleReg->CHANNEL[(uint8)tmr].TCTRL |= PIT_TCTRL_TEN_MASK;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method disables the timer managed by the class instance.
+ * This static method disables the specified timer.
  */
-void PITDriver::DisableTmr(void)
+void PITDriver::DisableTmr(tmr_id tmr)
 {
   moduleReg->CHANNEL[(uint8)tmr].TCTRL &= ~(PIT_TCTRL_TEN_MASK);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method enables the interrupt corresponding to the timer managed by the class instance.
+ * This static method enables the interrupt corresponding to the specified timer.
  */
-void PITDriver::EnableIntrpt(void)
+void PITDriver::EnableIntrpt(tmr_id tmr)
 {
   moduleReg->CHANNEL[(uint8)tmr].TCTRL |= PIT_TCTRL_TIE_MASK;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method disables the interrupt corresponding to the timer managed by the class instance.
+ * This static method disables the interrupt corresponding to the specified timer.
  */
-void PITDriver::DisableIntrpt(void)
+void PITDriver::DisableIntrpt(tmr_id tmr)
 {
   moduleReg->CHANNEL[(uint8)tmr].TCTRL &= ~(PIT_TCTRL_TIE_MASK);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method indicates whether the interrupt corresponding to the timer managed by the class instance is pending.
+ * This static method indicates whether the interrupt corresponding to the specified timer is pending.
  */
-bool PITDriver::IntrptIsPending(void)
+bool PITDriver::IntrptIsPending(tmr_id tmr)
 {
   return ((moduleReg->CHANNEL[(uint8)tmr].TFLG & PIT_TFLG_TIF_MASK) != 0) ? true : false;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This method clears the interrupt corresponding to the timer managed by the class instance.
+ * This static method clears the interrupt corresponding to the specified timer.
  */
-void PITDriver::ClearIntrpt(void)
+void PITDriver::ClearIntrpt(tmr_id tmr)
 {
   moduleReg->CHANNEL[(uint8)tmr].TFLG |= PIT_TFLG_TIF_MASK;
 }

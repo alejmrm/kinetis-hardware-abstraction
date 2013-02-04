@@ -12,11 +12,9 @@
 #include "SIMDriver.h"
 #include "VectorTable.h"
 
-PITDriver ctrlIntrptTmrDriver(PITDriver::TMR_1);
-
 void HandlePITInt(void)
 {
-  ctrlIntrptTmrDriver.ClearIntrpt();
+  PITDriver::ClearIntrpt(PITDriver::TMR_1);
 }
 
 /*****************************************************************************************************************************************************
@@ -34,9 +32,9 @@ int main(void)
   NVICDriver::EnableIntrpt(NVICDriver::INTRPT_PIT_1);
 
   PITDriver::EnableModule();
-  ctrlIntrptTmrDriver.SetPeriod(10000);
-  ctrlIntrptTmrDriver.EnableIntrpt();
-  ctrlIntrptTmrDriver.EnableTmr();
+  PITDriver::SetPeriod(PITDriver::TMR_1, 10000);
+  PITDriver::EnableIntrpt(PITDriver::TMR_1);
+  PITDriver::EnableTmr(PITDriver::TMR_1);
 
   while (true) { }
 }
