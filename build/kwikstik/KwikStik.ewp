@@ -295,6 +295,7 @@
           <name>CCIncludePath2</name>
           <state>$PROJ_DIR$\..\..\code\common</state>
           <state>$PROJ_DIR$\..\..\code\kwikstik</state>
+          <state>$PROJ_DIR$\..\..\lib\freescale</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
