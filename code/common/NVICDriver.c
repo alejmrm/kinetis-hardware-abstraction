@@ -5,7 +5,7 @@
 *  This file contains the nested vectored interrupt controller driver class implementation.
 *
 *****************************************************************************************************************************************************/
-#include <freescale/MK40X256VMD100.h>
+#include "MK40DZ10.h"
 #include "CommonTypes.h"
 #include "NVICDriver.h"
 
