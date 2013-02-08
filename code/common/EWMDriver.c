@@ -18,6 +18,13 @@
  * This static class data member is a pointer to the EWM register structure.
  */
 EWM_MemMapPtr EWMDriver::moduleReg = EWM_BASE_PTR;
+/*
+ * These static data members are flags that indicate whether the associated EWM registers have been written.
+ */
+bool EWMDriver::moduleIsEnabled = false;
+bool EWMDriver::clkPrescalerIsSet = false;
+bool EWMDriver::loCompValIsSet = false;
+bool EWMDriver::hiCompValIsSet = false;
 
 /*****************************************************************************************************************************************************
 *
@@ -44,9 +51,19 @@ EWMDriver::~EWMDriver(void)
 void EWMDriver::EnableModule(void)
 {
   /*
+   * If the EWM module has already been enabled, return immediately to avoid generating a bus transfer error by writing to the EWM control register
+   * module enable bit more than once.
+   */
+  if (moduleIsEnabled)
+    return;
+  /*
    * Set the EWM control register module enable bit.
    */
   moduleReg->CTRL |= ((uint8)1 << 0);
+  /*
+   * Indicate that the EWM module has been enabled.
+   */
+  moduleIsEnabled = true;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
@@ -113,33 +130,63 @@ void EWMDriver::DisableIntrpt(void)
 void EWMDriver::SetClkPrescaler(uint8 val)
 {
   /*
+   * If the clock prescaler value has already been set, return immediately to avoid generating a bus transfer error by writing to the EWM clock
+   * prescaler register more than once.
+   */
+  if (clkPrescalerIsSet)
+    return;
+  /*
    * Set the EWM clock prescaler register to the specified value.
    */
   *(uint8*)(0x40061005u) = val;
+  /*
+   * Indicate that the clock prescaler has been set.
+   */
+  clkPrescalerIsSet = true;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This static method sets the low EWM compare value, which defines the low end of the range of timer counts within which the external watchdog must
+ * This static method sets the EWM low compare value, which defines the low end of the range of timer counts within which the external watchdog must
  * be serviced.
  */
 void EWMDriver::SetLoCompVal(uint8 val)
 {
   /*
+   * If the low compare value has already been set, return immediately to avoid generating a bus transfer error by writing to the EWM compare low
+   * register more than once.
+   */
+  if (loCompValIsSet)
+    return;
+  /*
    * Set the EWM compare low register to the specified value.
    */
   moduleReg->CMPL = val;
+  /*
+   * Indicate that the low compare value has been set.
+   */
+  loCompValIsSet = true;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*
- * This static method sets the high EWM compare value, which defines the high end of the range of timer counts within which the external watchdog must
+ * This static method sets the EWM high compare value, which defines the high end of the range of timer counts within which the external watchdog must
  * be serviced.
  */
 void EWMDriver::SetHiCompVal(uint8 val)
 {
   /*
+   * If the high compare value has already been set, return immediately to avoid generating a bus transfer error by writing to the EWM compare high
+   * register more than once.
+   */
+  if (hiCompValIsSet)
+    return;
+  /*
    * Set the EWM compare high register to the specified value.
    */
   moduleReg->CMPH = val;
+  /*
+   * Indicate that the high compare value has been set.
+   */
+  hiCompValIsSet = true;
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /*

@@ -82,6 +82,13 @@ class EWMDriver : public PeriphDriver
    * This static data member is a pointer to the EWM register structure.
    */
   static EWM_MemMapPtr moduleReg;
+  /*
+   * These static data members are flags that indicate whether the associated EWM registers have been written.
+   */
+  static bool moduleIsEnabled;
+  static bool clkPrescalerIsSet;
+  static bool loCompValIsSet;
+  static bool hiCompValIsSet;
 };
 
 #endif
