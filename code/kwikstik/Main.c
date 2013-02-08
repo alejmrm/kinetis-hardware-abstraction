@@ -16,12 +16,10 @@
 
 void HandlePITInt(void)
 {
-  PITDriver::ClearIntrpt(PITDriver::TMR_1);
-
   static bool displayFlag = false;
   static uint16 displayCnt = 0;
 
-  ctrlIntrptTmrDriver.ClearIntrpt();
+  PITDriver::ClearIntrpt(PITDriver::TMR_1);
 
   if (++displayCnt >= 1000)  {
     if (displayFlag)  {

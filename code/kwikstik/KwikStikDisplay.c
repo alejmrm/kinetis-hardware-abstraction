@@ -5,7 +5,7 @@
 *  This file contains the KwikStik display class implementation.
 *
 *****************************************************************************************************************************************************/
-#include <freescale/MK40X256VMD100.h>
+#include "MK40DZ10.h"
 #include "CommonTypes.h"
 #include "KwikStikDisplay.h"
 #include "PORTDriver.h"
