@@ -13,7 +13,7 @@
 *  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 *
 *****************************************************************************************************************************************************/
-#include "MK40DZ10.h"
+#include <MK40DZ10.h>
 #include "CommonTypes.h"
 #include "SIMDriver.h"
 

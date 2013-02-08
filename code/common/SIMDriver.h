@@ -16,7 +16,7 @@
 #ifndef SIM_DRIVER_H
 #define SIM_DRIVER_H
 
-#include "MK40DZ10.h"
+#include <MK40DZ10.h>
 #include "CommonTypes.h"
 #include "PeriphDriver.h"
 
